@@ -53,4 +53,24 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
     border-radius: 6px;
     background-color: var(--trend-color);
 }
+    
+.custom-shape-divider-bottom-1759732534 {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
 
+.custom-shape-divider-bottom-1759732534 svg {
+    position: relative;
+    display: block;
+    width: calc(111% + 1.3px);
+    height: 86px;
+}
+
+.custom-shape-divider-bottom-1759732534 .shape-fill {
+    fill: #FFFFFF;
+}

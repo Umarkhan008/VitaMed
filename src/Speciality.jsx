@@ -26,7 +26,7 @@ const services = [
 const Services = () => {
     return (
         <div className='w-full'>
-            <section className='w-full max-w-[1400px] mx-auto pt-60 flex flex-col items-center'>
+            <section className='w-full max-w-[1400px] mx-auto pt-60 max-lg:pt-20 flex flex-col items-center'>
                 <div className='mb-6'>
                     <span className='px-6 py-2 bg-white rounded-xl shadow text-[#01bdb2] font-semibold text-lg'>OUR SPECIALITY</span>
                 </div>
