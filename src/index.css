@@ -75,3 +75,29 @@ border: 1px solid rgba(255, 255, 255, 0.3); */
 .custom-shape-divider-bottom-1759732534 .shape-fill {
     fill: #FFFFFF;
 }
+
+/* Loader animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-delay-150 {
+    animation-delay: 0.15s;
+}
+
+.animation-delay-300 {
+    animation-delay: 0.3s;
+}
+
+.animation-delay-500 {
+    animation-delay: 0.5s;
+}
+
+.animation-delay-700 {
+    animation-delay: 0.7s;
+}
