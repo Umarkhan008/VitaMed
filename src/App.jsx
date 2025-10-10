@@ -3,6 +3,8 @@ import Header from './Header.jsx'
 import Speciality from './Speciality.jsx'
 import About from './About.jsx'
 import Service from './Service.jsx'
+import ChooseUs from './ChooseUs.jsx'
+import Team from './Team.jsx'
 import Testimonial from './Testimonial.jsx'
 import Loader from './Loader.jsx'
 
@@ -73,6 +75,8 @@ const App = () => {
       <Speciality />
       <About />
       <Service />
+      <ChooseUs />
+      <Team />
       <Testimonial />
     </>
   )
