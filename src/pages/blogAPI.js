@@ -7,9 +7,21 @@ export async function fetchBlogPosts() {
   if (blogPostsCache) return blogPostsCache
   
   try {
+    // First try to load from localStorage (admin changes)
+    const localPosts = localStorage.getItem('blogPosts')
+    if (localPosts) {
+      blogPostsCache = JSON.parse(localPosts)
+      return blogPostsCache
+    }
+    
+    // Then try JSON file
     const response = await fetch('/blog-posts.json')
     if (!response.ok) throw new Error('Failed to fetch posts')
     blogPostsCache = await response.json()
+    
+    // Save to localStorage for consistency
+    localStorage.setItem('blogPosts', JSON.stringify(blogPostsCache))
+    
     return blogPostsCache
   } catch (error) {
     console.warn('Using fallback blog posts:', error)
@@ -46,15 +58,19 @@ export async function fetchBlogPosts() {
         content: "Eshitishni asrash uchun:\n\n- Quloqchinlardan o'rtacha balandlikda foydalaning\n- Quloqni chuqur tozalashdan saqlaning\n- Suvdan keyin quloqni quriting\n- Muntazam tekshiruvdan o'ting"
       }
     ]
+    localStorage.setItem('blogPosts', JSON.stringify(blogPostsCache))
     return blogPostsCache
   }
 }
 
-export function getPostById(id) {
-  if (blogPostsCache) {
-    return blogPostsCache.find((p) => p.id === id)
+export async function getPostById(id) {
+  try {
+    const posts = await fetchBlogPosts()
+    return posts.find((p) => p.id === id)
+  } catch (error) {
+    console.error('Error getting post by ID:', error)
+    return null
   }
-  return null
 }
 
 // Simulate API calls for admin operations
@@ -75,7 +91,9 @@ export async function createPost(postData) {
     posts.unshift(newPost) // Add to beginning
     blogPostsCache = posts
     
-    // In a real app, this would make an API call
+    // Save to localStorage as backup (in real app, this would be API call)
+    localStorage.setItem('blogPosts', JSON.stringify(posts))
+    
     console.log('Post created:', newPost)
     
     return { success: true, post: newPost }
@@ -102,7 +120,9 @@ export async function updatePost(postId, postData) {
     posts[index] = { ...postData }
     blogPostsCache = posts
     
-    // In a real app, this would make an API call
+    // Save to localStorage as backup
+    localStorage.setItem('blogPosts', JSON.stringify(posts))
+    
     console.log('Post updated:', postData)
     
     return { success: true, post: postData }
@@ -124,7 +144,9 @@ export async function deletePost(postId) {
     const deletedPost = posts.splice(index, 1)[0]
     blogPostsCache = posts
     
-    // In a real app, this would make an API call
+    // Save to localStorage as backup
+    localStorage.setItem('blogPosts', JSON.stringify(posts))
+    
     console.log('Post deleted:', deletedPost)
     
     return { success: true, post: deletedPost }

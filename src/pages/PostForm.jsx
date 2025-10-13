@@ -148,7 +148,7 @@ const PostForm = () => {
         setFormData(prev => ({
             ...prev,
             title,
-            id: !post ? generateSlug(title) : prev.id
+            id: !isEditing ? generateSlug(title) : prev.id
         }))
     }
 
