@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sinusitis-care",
+    "title": "Sinusitdan himoyalanish: oddiy qoidalar",
+    "excerpt": "Mavsumiy shamollash va allergiyalar sinusitni qo'zg'atishi mumkin.",
+    "date": "2025-09-18",
+    "author": "Dr. A. Rahmonov",
+    "tag": "Profilaktika",
+    "image": "/assets/img1.webp",
+    "content": "Sinusit – burun atrofidagi sinuslarning yallig'lanishi. Oldini olish uchun:\n\n- Burunni muntazam tozalang (izotonik eritmalar bilan)\n- Chang va allergenlardan saqlaning\n- Yetarli suyuqlik iching va namlikni saqlang\n- Shamollash alomatlarida erta konsultatsiya qiling"
+  },
+  {
+    "id": "tonsillitis-signs",
+    "title": "Tonsillit alomatlari va davolash usullari",
+    "excerpt": "Bodomsimon bezlarning yallig'lanishi haqida asosiy ma'lumotlar.",
+    "date": "2025-08-04",
+    "author": "Dr. M. Karimova",
+    "tag": "LOR",
+    "image": "/assets/img2.webp",
+    "content": "Tonsillit – bo'g'izdagi bodomsimon bezlar yallig'lanishi. Belgilar:\n\n- Tomoq og'rig'i va yutinishda qiyinchilik\n- Isitma va holsizlik\n- Bo'g'izda qizarish, shish\n\nDavolash: shifokor tavsiyasiga ko'ra dori-darmonlar, issiq ichimliklar, dam olish."
+  },
+  {
+    "id": "hearing-health",
+    "title": "Eshitish salomatligi: kundalik parvarish",
+    "excerpt": "Eshitish qobiliyatini asrash va yaxshilash bo'yicha tavsiyalar.",
+    "date": "2025-06-22",
+    "author": "VitaMed Team",
+    "tag": "Maslahat",
+    "image": "/assets/logo.jpg",
+    "content": "Eshitishni asrash uchun:\n\n- Quloqchinlardan o'rtacha balandlikda foydalaning\n- Quloqni chuqur tozalashdan saqlaning\n- Suvdan keyin quloqni quriting\n- Muntazam tekshiruvdan o'ting"
+  }
+]

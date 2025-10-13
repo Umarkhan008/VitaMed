@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const services = [
   {
+    id: "cardiology",
     title: "Cardiology",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -12,6 +14,7 @@ const services = [
     desc: "Lorem ipsum dolor sit amet, consetet sadipscing elitr, sed dinoumy eirmod tempor invidunt.",
   },
   {
+    id: "neurology",
     title: "Neurology",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -22,6 +25,7 @@ const services = [
     desc: "Lorem ipsum dolor sit amet, consetet sadipscing elitr, sed dinoumy eirmod tempor invidunt.",
   },
   {
+    id: "gastroenterology",
     title: "Gastroenterology",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -31,6 +35,7 @@ const services = [
     desc: "Lorem ipsum dolor sit amet, consetet sadipscing elitr, sed dinoumy eirmod tempor invidunt.",
   },
   {
+    id: "orthopedics",
     title: "Orthopedics",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -41,6 +46,7 @@ const services = [
     desc: "Lorem ipsum dolor sit amet, consetet sadipscing elitr, sed dinoumy eirmod tempor invidunt.",
   },
   {
+    id: "gynecology",
     title: "Gynecology",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -51,6 +57,7 @@ const services = [
     desc: "Lorem ipsum dolor sit amet, consetet sadipscing elitr, sed dinoumy eirmod tempor invidunt.",
   },
   {
+    id: "dental-surgery",
     title: "Dental Surgery",
     icon: (
       <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -93,33 +100,31 @@ const Service = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((service, idx) => (
-            <div
+            <Link
               key={idx}
-              className="relative overflow-hidden rounded-2xl shadow-lg flex flex-col items-start transition hover:shadow-xl bg-white group"
+              to={`/service/${service.id}`}
+              className="relative overflow-hidden rounded-2xl shadow-lg flex flex-col items-start transition hover:shadow-xl bg-white group cursor-pointer"
             >
               {/* Hover effect background */}
               <div className="absolute hover:shadow-xl inset-0 bg-[#18c2b8] opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-100 rounded-2xl transition-all duration-500 ease-in-out"></div>
               {/* Card content */}
-              <div className="relative z-10 px-8 py-8">
+              <div className="relative z-10 px-8 py-8 w-full">
                 <div className="mb-4">
-                  {/* Ikon hoverda oq bo‘lishi uchun */}
+                  {/* Ikon hoverda oq bo'lishi uchun */}
                   <span className="transition-colors duration-500 group-hover:[&>svg]:stroke-white">
                     {service.icon}
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-[#14275b] transition-colors duration-500 group-hover:text-white">{service.title}</h3>
                 <p className="text-gray-500 mb-6 text-[15px] transition-colors duration-500 group-hover:text-white">{service.desc}</p>
-                <a
-                  href="#"
-                  className="flex items-center gap-2 text-[#18c2b8] font-semibold text-[16px] hover:underline transition-colors duration-500 group-hover:text-white"
-                >
+                <div className="flex items-center gap-2 text-[#18c2b8] font-semibold text-[16px] hover:underline transition-colors duration-500 group-hover:text-white">
                   Read More
                   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

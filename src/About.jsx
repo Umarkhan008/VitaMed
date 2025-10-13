@@ -1,6 +1,5 @@
 import React from 'react'
 import img1 from '../public/assets/img1.webp'
-import img2 from '../public/assets/img2.webp'
 
 const About = () => {
     return (
@@ -9,20 +8,42 @@ const About = () => {
                 {/* Images */}
                 <div className="relative flex-shrink-0 w-full lg:w-auto mb-10 lg:mb-0">
                     {/* Main image container */}
-                    <div className="relative w-full max-w-[350px] sm:max-w-[400px] mx-auto lg:mx-0">
-                        <img
-                            src={img1}
-                            alt="Doctor working"
-                            className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] h-[350px] sm:h-[400px] lg:h-[475px] object-cover rounded-2xl shadow-2xl"
-                        />
-                        {/* Overlapping image - positioned better for mobile */}
-                        <img
-                            src={img2}
-                            alt="Doctor with patient"
-                            className="absolute -bottom-4 sm:-bottom-8 -right-4 sm:-right-8 w-[160px] sm:w-[200px] lg:w-[240px] h-[200px] sm:h-[250px] lg:h-[300px] object-cover rounded-2xl shadow-2xl border-4 border-white z-10"
-                        />
-                        {/* Decorative background element */}
-                        <div className="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 w-full h-full bg-gradient-to-br from-[#01bdb2] to-[#142959] rounded-2xl -z-10 opacity-20"></div>
+                    <div className="relative w-full max-w-[400px] sm:max-w-[450px] mx-auto lg:mx-0">
+                        {/* Main image with enhanced styling */}
+                        <div className="relative group">
+                            <img
+                                src={img1}
+                                alt="Doctor working"
+                                className="w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[420px] h-[380px] sm:h-[420px] lg:h-[500px] object-cover rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                            />
+                            {/* Floating elements for visual interest */}
+                            <div className="absolute -top-6 -left-6 w-12 h-12 bg-[#01bdb2] rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-[#142959] rounded-full flex items-center justify-center shadow-lg">
+                                <svg width="16" height="16" fill="white" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        
+                        {/* Additional decorative element */}
+                        <div className="absolute top-8 -right-2 w-16 h-16 bg-gradient-to-br from-[#01bdb2] to-[#142959] rounded-2xl -z-10 opacity-30 transform rotate-12"></div>
+                        
+                        {/* Enhanced decorative background */}
+                        <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 w-full h-full bg-gradient-to-br from-[#01bdb2] to-[#142959] rounded-3xl -z-10 opacity-15"></div>
+                        
+                        {/* Floating statistics card */}
+                        <div className="absolute -bottom-2 -left-4 sm:-left-8 bg-white p-4 sm:p-6 rounded-2xl shadow-xl z-20 min-w-[140px] sm:min-w-[160px]">
+                            <div className="text-center">
+                                <div className="text-2xl sm:text-3xl font-bold text-[#01bdb2]">15+</div>
+                                <div className="text-sm sm:text-base font-semibold text-[#142959]">Yillik Tajriba</div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 {/* Text Content */}
@@ -30,11 +51,12 @@ const About = () => {
                     <span className="text-[16px] sm:text-[18px] text-[#01bdb2] font-semibold mb-3 sm:mb-4 block border-b-2 border-[#01bdb2] w-fit pb-2">
                         Welcome to VitaMed
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#142959] mb-6 sm:mb-8 leading-tight">
-                        Best Care For Your<br /> Good Health
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#142959] mb-6 sm:mb-8 leading-tight">
+                        Sog'lig'ingiz uchun eng yaxshi g'amxo'rlik
                     </h2>
-                    <p className="text-gray-600 text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 leading-relaxed">
-                        Esteem spirit temper too say adieus who direct esteem. It esteems luckily or picture placing drawing. Apartments frequently or motionless on reasonable projecting expression.
+                    <p className="text-gray-600 text-base sm:text-lg lg:text-lg mb-6 sm:mb-8 leading-relaxed">
+                    Tajribali shifokorlarimiz sizning eshitish, nafas olish va so‘zlash qobiliyatingizni tiklash uchun eng ilg‘or texnologiyalardan foydalanadi.
+                    Bizda quloq shang‘illashi, burun tiqilishi, tomoq og‘rishi va boshqa ENT muammolari chuqur tahlil qilinadi va samarali yechimlar taklif etiladi.
                     </p>
                     <ul className="mb-8 sm:mb-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-4 sm:gap-y-6">
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
@@ -43,7 +65,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            MEDICAL COUNSELING
+                            TIBBIY MASLAHAT
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -51,7 +73,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            EAR LOBE REPAIR
+                            YAXSHI TAJRIBALI SHIFOKORLAR
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -59,7 +81,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            WELL EXPERIENCED DOCTORS
+                            ZAMONAVIY USKUNALAR                            
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -67,7 +89,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            MICROLARYNGEAL SURGERY
+                            
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -75,7 +97,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            INNER/MIDDLE EAR PROBLEMS
+                            BARCHA TURDAGI LOR OPERATSIYALAR
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -83,7 +105,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            EAR DISORDERS
+                          QULOQ MUAMMOLARI
                         </li>
                     </ul>
                     <div className="w-full mx-auto">

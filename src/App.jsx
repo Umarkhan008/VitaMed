@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './Header.jsx'
 import Speciality from './Speciality.jsx'
 import About from './About.jsx'
@@ -7,78 +8,118 @@ import ChooseUs from './ChooseUs.jsx'
 import Team from './Team.jsx'
 import Testimonial from './Testimonial.jsx'
 import Loader from './Loader.jsx'
+import ServiceDetail from './pages/ServiceDetail.jsx'
+import Blog from './pages/Blog.jsx'
+import BlogPost from './pages/BlogPost.jsx'
+import AdminLogin from './pages/AdminLogin.jsx'
+import AdminDashboard from './pages/AdminDashboard.jsx'
+import PostForm from './pages/PostForm.jsx'
+import Footer from './Footer.jsx'
+import BlogPreview from './pages/BlogPreview.jsx'
+
+const HomePage = () => (
+  <>
+    <Header />
+    <Speciality />
+    <About />
+    <Service />
+    <BlogPreview />
+    <ChooseUs />
+    <Team />
+    <Testimonial />
+    <Footer />
+  </>
+)
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading time for assets
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 3000) // 3 seconds loading time
+    const detachListeners = []
 
-    // Also check if all images and videos are loaded
-    const checkAssetsLoaded = () => {
-      const images = document.querySelectorAll('img')
-      const videos = document.querySelectorAll('video')
-      
-      let loadedCount = 0
-      const totalAssets = images.length + videos.length
-      
-      if (totalAssets === 0) {
-        setIsLoading(false)
+    const markDone = () => setIsLoading(false)
+
+    const startAssetWatch = () => {
+      const imageNodes = Array.from(document.querySelectorAll('img'))
+      const videoNodes = Array.from(document.querySelectorAll('video'))
+
+      const totalTargets = imageNodes.length + videoNodes.length
+      if (totalTargets === 0) {
+        markDone()
         return
       }
 
-      const checkComplete = () => {
-        loadedCount++
-        if (loadedCount >= totalAssets) {
-          setIsLoading(false)
+      let loadedTargets = 0
+      const handleOne = () => {
+        loadedTargets += 1
+        if (loadedTargets >= totalTargets) {
+          markDone()
         }
       }
 
-      images.forEach(img => {
+      imageNodes.forEach((img) => {
         if (img.complete) {
-          checkComplete()
-        } else {
-          img.addEventListener('load', checkComplete)
-          img.addEventListener('error', checkComplete)
+          handleOne()
+          return
         }
+        const onLoad = () => handleOne()
+        const onError = () => handleOne()
+        img.addEventListener('load', onLoad, { once: true })
+        img.addEventListener('error', onError, { once: true })
+        detachListeners.push(() => {
+          img.removeEventListener('load', onLoad)
+          img.removeEventListener('error', onError)
+        })
       })
 
-      videos.forEach(video => {
+      videoNodes.forEach((video) => {
         if (video.readyState >= 3) { // HAVE_FUTURE_DATA
-          checkComplete()
-        } else {
-          video.addEventListener('canplaythrough', checkComplete)
-          video.addEventListener('error', checkComplete)
+          handleOne()
+          return
         }
+        const onReady = () => handleOne()
+        const onError = () => handleOne()
+        video.addEventListener('canplaythrough', onReady, { once: true })
+        video.addEventListener('error', onError, { once: true })
+        detachListeners.push(() => {
+          video.removeEventListener('canplaythrough', onReady)
+          video.removeEventListener('error', onError)
+        })
       })
     }
 
-    // Check assets after a short delay to allow DOM to render
-    const assetTimer = setTimeout(checkAssetsLoaded, 500)
+    // Allow DOM to mount, then begin tracking; add a hard timeout fallback
+    const startTimer = setTimeout(startAssetWatch, 0)
+    const hardTimeout = setTimeout(markDone, 10000)
+
+    // Prevent scroll while loading
+    if (isLoading) {
+      document.documentElement.style.overflow = 'hidden'
+    }
 
     return () => {
-      clearTimeout(timer)
-      clearTimeout(assetTimer)
+      clearTimeout(startTimer)
+      clearTimeout(hardTimeout)
+      detachListeners.forEach((fn) => fn())
+      document.documentElement.style.overflow = ''
     }
-  }, [])
-
-  if (isLoading) {
-    return <Loader />
-  }
+  }, [isLoading])
 
   return (
-    <>
-      <Header />
-      <Speciality />
-      <About />
-      <Service />
-      <ChooseUs />
-      <Team />
-      <Testimonial />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<HomePage />} />
+        <Route path="/service/:serviceId" element={<ServiceDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:postId" element={<BlogPost />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/post/new" element={<PostForm />} />
+        <Route path="/admin/post/:postId/edit" element={<PostForm />} />
+      </Routes>
+      {isLoading && <Loader />}
+    </Router>
   )
 }
 
