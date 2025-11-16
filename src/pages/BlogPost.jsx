@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Header from '../Header.jsx'
 import Footer from '../Footer.jsx'
-import { fetchBlogPosts } from './blogAPI.js'
+import { blogPosts, getPostById } from './blogData.js'
 
 const BlogPost = () => {
     const { postId } = useParams()
@@ -11,21 +11,12 @@ const BlogPost = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const loadPost = async () => {
-            try {
-                const posts = await fetchBlogPosts()
-                const foundPost = posts.find(p => p.id === postId)
-                const related = posts.filter(p => p.id !== postId).slice(0, 3)
-                
-                setPost(foundPost)
-                setRelatedPosts(related)
-            } catch (error) {
-                console.error('Error loading post:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadPost()
+        const foundPost = getPostById(postId)
+        const related = blogPosts.filter(p => p.id !== postId).slice(0, 3)
+        
+        setPost(foundPost)
+        setRelatedPosts(related)
+        setLoading(false)
     }, [postId])
 
     if (loading) {

@@ -3,22 +3,53 @@ import { useNavigate } from 'react-router-dom'
 import Header from '../Header.jsx'
 import Footer from '../Footer.jsx'
 import { fetchBlogPosts, deletePost, clearCache } from './blogAPI.js'
+import { isAuthenticated, logout, getCurrentUser, getSessionTimeRemaining, extendSession } from '../utils/auth.js'
 
 const AdminDashboard = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [message, setMessage] = useState('')
     const [messageType, setMessageType] = useState('')
+    const [currentUser, setCurrentUser] = useState(null)
+    const [sessionTime, setSessionTime] = useState(0)
+    const [showSessionWarning, setShowSessionWarning] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
         // Check authentication
-        if (!localStorage.getItem('adminAuth')) {
+        if (!isAuthenticated()) {
             navigate('/admin/login')
             return
         }
 
+        // Get current user info
+        const user = getCurrentUser()
+        setCurrentUser(user)
+
+        // Update session time
+        const updateSessionTime = () => {
+            const remaining = getSessionTimeRemaining()
+            setSessionTime(remaining)
+            
+            // Show warning when 10 minutes left
+            if (remaining <= 10 && remaining > 0) {
+                setShowSessionWarning(true)
+            } else {
+                setShowSessionWarning(false)
+            }
+            
+            // Auto logout when session expires
+            if (remaining <= 0) {
+                handleLogout()
+            }
+        }
+
+        updateSessionTime()
+        const sessionInterval = setInterval(updateSessionTime, 60000) // Update every minute
+
         loadPosts()
+
+        return () => clearInterval(sessionInterval)
     }, [navigate])
 
     const loadPosts = async () => {
@@ -33,8 +64,16 @@ const AdminDashboard = () => {
     }
 
     const handleLogout = () => {
-        localStorage.removeItem('adminAuth')
+        logout()
         navigate('/admin/login')
+    }
+
+    const handleExtendSession = () => {
+        if (extendSession()) {
+            setShowSessionWarning(false)
+            setSessionTime(getSessionTimeRemaining())
+            showMessage('Sessiya 2 soatga uzaytirildi!', 'success')
+        }
     }
 
     const showMessage = (text, type = 'success') => {
@@ -97,6 +136,66 @@ const AdminDashboard = () => {
             <Header />
             <main className="bg-gray-50 min-h-screen py-12">
                 <div className="max-w-7xl mx-auto px-4">
+                    {/* User Info Bar */}
+                    {currentUser && (
+                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p className="font-medium text-gray-900">Xush kelibsiz, {currentUser.username}!</p>
+                                        <p className="text-sm text-gray-500">
+                                            Kirgan vaqt: {new Date(currentUser.loginTime).toLocaleString()}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <div className="text-right">
+                                        <p className="text-sm text-gray-500">Sessiya vaqti</p>
+                                        <p className={`text-sm font-medium ${sessionTime <= 10 ? 'text-red-600' : 'text-green-600'}`}>
+                                            {sessionTime} daqiqa qoldi
+                                        </p>
+                                    </div>
+                                    {showSessionWarning && (
+                                        <button
+                                            onClick={handleExtendSession}
+                                            className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-600 transition-colors"
+                                        >
+                                            Uzaytirish
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Session Warning */}
+                    {showSessionWarning && (
+                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center">
+                                    <svg className="w-5 h-5 text-orange-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                    </svg>
+                                    <div>
+                                        <p className="text-orange-800 font-medium">Sessiya tugash arafasida</p>
+                                        <p className="text-orange-600 text-sm">Yana {sessionTime} daqiqa qoldi. Davom etish uchun sessiyani uzaytiring.</p>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={handleExtendSession}
+                                    className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-600 transition-colors"
+                                >
+                                    Uzaytirish
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Header */}
                     <div className="flex justify-between items-center mb-8">
                         <div>
@@ -106,15 +205,21 @@ const AdminDashboard = () => {
                         <div className="flex gap-4">
                             <button
                                 onClick={handleNewPost}
-                                className="bg-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-600 transition-colors"
+                                className="bg-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-600 transition-colors flex items-center space-x-2"
                             >
-                                + Yangi Post
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                </svg>
+                                <span>Yangi Post</span>
                             </button>
                             <button
                                 onClick={handleLogout}
-                                className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                                className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors flex items-center space-x-2"
                             >
-                                Chiqish
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Chiqish</span>
                             </button>
                         </div>
                     </div>

@@ -599,7 +599,7 @@ const ServiceDetail = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Yordam kerakmi?</h3>
                 <div className="space-y-2 mb-6">
-                  <p className="text-white/90">+(000) 123456789</p>
+                  <p className="text-white/90">+998 93 901 06 60</p>
                   <p className="text-white/90">mail@doctent.com</p>
                 </div>
                 <button className="w-full bg-white text-teal-600 py-3 px-6 rounded-xl font-bold hover:bg-gray-100 transition-colors">

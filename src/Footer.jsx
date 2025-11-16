@@ -21,7 +21,7 @@ const Footer = () => {
                                         24/7
                                     </span>
                                 </p>
-                                <p className="text-sm text-gray-400 m-0">Quality Healthcare</p>
+                                <p className="text-sm text-gray-400 m-0">Sifatli Tibbiy Xizmat</p>
                             </div>
                         </div>
                         <p className="text-sm text-gray-400 leading-6 mb-6">
@@ -102,5 +102,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-

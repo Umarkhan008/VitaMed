@@ -1,24 +1,28 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import doctor1 from '../public/assets/bexruzbek.jpg'
 const teamMembers = [
   {
-    name: 'Emily Taylor',
-    role: 'DOCTOR',
-    img: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?q=80&w=1200&auto=format&fit=crop',
+    name: 'Dr. Muxtorov Behruz',
+    role: 'LOR SHIFOKOR',
+    experience: '3 yil',
+    img: doctor1,
   },
   {
-    name: 'Rebecca Deo',
-    role: 'DOCTOR',
+    name: 'Dr. Dilnoza Tursunova',
+    role: 'LOR SHIFOKOR',
+    experience: '12 yil',
     img: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    name: 'John Deo',
-    role: 'DOCTOR',
+    name: 'Dr. Bobur Rahimov',
+    role: 'LOR SHIFOKOR',
+    experience: '10 yil',
     img: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    name: 'Rebecca Romijn',
-    role: 'DOCTOR',
+    name: 'Dr. Malika Yusupova',
+    role: 'LOR SHIFOKOR',
+    experience: '13 yil',
     img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop',
   },
 ]
@@ -58,71 +62,124 @@ const LinkedinIcon = () => (
 
 const TeamCard = ({ member }) => {
   return (
-    <div className="group flex flex-col items-center text-center">
-      <div className="relative w-64 h-64 md:w-56 md:h-56 lg:w-64 lg:h-64">
-        {/* Decorative top arc (only on hover) */}
-        <div
-          className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 w-[20rem] h-[20rem] rounded-full border-[26px] border-[#01bdb2] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 -z-10"
-          style={{ clipPath: 'inset(0 0 50% 0)' }}
-        />
-        {/* Avatar with clean circular crop and subtle ring */}
-        <img
-          src={member.img}
-          alt={member.name}
-          className="relative z-10 w-full h-full rounded-full object-cover shadow-xl ring-4 ring-white"
-        />
-        {/* Share button is always visible; socials show when hovering the button */}
-        <div className="absolute z-20 left-1/2 -translate-x-1/2 -bottom-3 md:-bottom-4">
-          <div className="relative flex items-center group">
-            {/* Share button (peer) */}
-            <button
-              aria-label="Share profile"
-              className="peer relative z-10 w-12 h-12 rounded-full bg-white text-[#01bdb2] shadow-xl flex items-center justify-center"
-            >
-              <ShareIcon />
-            </button>
-            {/* Social pill shown only when hovering the share button */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-14 flex items-center gap-4 bg-[#01bdb2]/95 text-white px-5 py-3 rounded-full shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 pointer-events-none peer-hover:opacity-100 peer-hover:visible peer-hover:-translate-y-1 peer-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible group-hover:-translate-y-1 group-hover:pointer-events-auto">
-              <a href="#" aria-label="Share on Facebook" className="hover:text-white/90"><FacebookIcon /></a>
-              <a href="#" aria-label="Share on Twitter" className="hover:text-white/90"><TwitterIcon /></a>
-              <a href="#" aria-label="Share on LinkedIn" className="hover:text-white/90"><LinkedinIcon /></a>
+    <div className="group flex-shrink-0 w-full">
+      <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+        {/* Image Container */}
+        <div className="relative h-96 overflow-hidden bg-gray-200">
+          <img
+            src={member.img}
+            alt={member.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          {/* Overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#01bdb2]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+            <div className="flex items-center gap-4 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+              <a href="#" aria-label="Share on Facebook" className="hover:text-white/90 transition-colors"><FacebookIcon /></a>
+              <a href="#" aria-label="Share on Twitter" className="hover:text-white/90 transition-colors"><TwitterIcon /></a>
+              <a href="#" aria-label="Share on LinkedIn" className="hover:text-white/90 transition-colors"><LinkedinIcon /></a>
             </div>
           </div>
         </div>
+        
+        {/* Content Container */}
+        <div className="p-8 text-center">
+          <h3 className="text-2xl font-extrabold text-[#142959] mb-2">
+            {member.name}
+          </h3>
+          <p className="text-base text-[#01bdb2] font-semibold tracking-wide mb-3">{member.role}</p>
+          <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+            <svg className="w-4 h-4 text-[#01bdb2]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.429 5.951 1.429a1 1 0 001.169-1.409l-7-14z" />
+            </svg>
+            <span className="font-semibold">Tajriba: {member.experience}</span>
+          </div>
+        </div>
       </div>
-      <h3 className="mt-8 text-2xl md:text-xl lg:text-2xl font-extrabold text-[#142959]">
-        {member.name}
-      </h3>
-      <p className="mt-2 text-gray-500 tracking-wide font-semibold">{member.role}</p>
     </div>
   )
 }
 
 const Team = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const itemsPerView = 3
+  const maxIndex = Math.max(0, teamMembers.length - itemsPerView)
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
+  }
+
+  const handleDotClick = (index) => {
+    setCurrentIndex(index)
+  }
+
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="flex flex-col items-center mb-12">
-        <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">OUR TEAM</span>
+        <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">BIZNING JAMOA</span>
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#142959] text-center leading-tight">
-          Meet Our Professionals
+          Bizning Mutaxassislarimiz
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {teamMembers.map((m) => (
-          <TeamCard key={m.name} member={m} />
-        ))}
+      {/* Carousel Container */}
+      <div className="relative">
+        {/* Carousel */}
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+            }}
+          >
+            {teamMembers.map((m) => (
+              <div key={m.name} className="w-1/3 px-4 flex-shrink-0">
+                <TeamCard member={m} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+          aria-label="Previous"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+          aria-label="Next"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
 
-      {/* Carousel dots (static visual indicator) */}
+      {/* Carousel Dots */}
       <div className="mt-12 flex items-center justify-center gap-3">
-        <span className="w-2.5 h-2.5 rounded-full bg-[#01bdb2]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
+        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   )
 }
 
 export default Team
-
-

@@ -1,29 +1,29 @@
 import React from 'react'
-
+import doctor from "../public/assets/bosh.jpg"
 const items = [
   {
     id: 1,
-    title: 'Comprehensive Audiologic Evaluations For Adults',
+    title: 'Kattalar uchun to\'liq audiologik tekshiruv',
     content:
-      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.',
+      'Eshitish qobiliyatini chuqur tahlil qilish va eng zamonaviy uskunalar yordamida aniq tashxis qo\'yish xizmatlari.',
   },
   {
     id: 2,
-    title: 'Ototoxicity Monitoring',
+    title: 'Quloq kasalliklarini kuzatish',
     content:
-      'Monitoring plans tailored to each patient to detect changes early and protect hearing health throughout treatment.',
+      'Har bir bemor uchun maxsus kuzatuv rejasi tuzib, erta bosqichda o\'zgarishlarni aniqlash va eshitish salomatligini himoya qilish.',
   },
   {
     id: 3,
-    title: 'Protective Hearing Devices',
+    title: 'Himoya vositalarini tayyorlash',
     content:
-      'Custom-fitted protection and counseling for work and lifestyle to reduce risk without sacrificing comfort.',
+      'Ish va turmush tarzi uchun maxsus tayyorlangan himoya vositalarini ishlab chiqish va maslahat berish.',
   },
   {
     id: 4,
-    title: 'Comprehensive Audiologic Evaluations For Children',
+    title: 'Bolalar uchun to\'liq audiologik tekshiruv',
     content:
-      'Child‑friendly diagnostics with family guidance to support speech, language, and learning outcomes.',
+      'Bolalarga mos keladigan tashxis usullari va oila a\'zolariga yo\'l-yo\'riq berish orqali nutq va til rivojlanishini qo\'llab-quvvatlash.',
   },
 ]
 
@@ -34,30 +34,30 @@ const ChooseUs = () => {
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
-          <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">WHY CHOOSE</span>
+          <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">NIMA UCHUN BIZ ?</span>
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#142959] leading-tight mb-6">
-            Why People Choose Us?
+            Nima uchun bizni tanlashadi?
           </h2>
           <p className="text-gray-600 leading-relaxed mb-10 max-w-2xl">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.
+            Bizning klinikamizda eng zamonaviy texnologiyalar, tajribali shifokorlar va individual yondashuv mavjud.
+            Har bir bemorga alohida e'tibor berib, eng yaxshi natijaga erishishga harakat qilamiz.
           </p>
 
           <div className="flex items-center gap-4 mb-8">
             <img
-              src="https://themecrafter.com/doctent/wp-content/uploads/2023/02/team-img01-150x150.jpg"
+              src={doctor}
               alt="Doctor avatar"
               className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md"
             />
             <div>
-              <h4 className="text-xl font-semibold text-[#142959]">Dr. Steve Smith</h4>
-              <p className="text-[#01bdb2] font-medium">CEO & FOUNDER</p>
+              <h4 className="text-xl font-semibold text-[#142959]">Dr. Otajon Kimsanov</h4>
+              <p className="text-[#01bdb2] font-medium">BOSH SHIFOKOR</p>
             </div>
           </div>
 
           <button className="inline-flex items-center gap-2 text-[#142959] font-semibold hover:text-[#01bdb2] transition-colors">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#e6fffc] text-[#01bdb2]">→</span>
-            READ MORE
+            BATAFSIL
           </button>
         </div>
 

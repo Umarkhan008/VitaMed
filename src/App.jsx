@@ -16,6 +16,7 @@ import AdminDashboard from './pages/AdminDashboard.jsx'
 import PostForm from './pages/PostForm.jsx'
 import Footer from './Footer.jsx'
 import BlogPreview from './pages/BlogPreview.jsx'
+import Contact from './pages/Contact.jsx';
 
 const HomePage = () => (
   <>
@@ -27,6 +28,7 @@ const HomePage = () => (
     <ChooseUs />
     <Team />
     <Testimonial />
+    <Contact />
     <Footer />
   </>
 )
@@ -117,6 +119,7 @@ const App = () => {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/post/new" element={<PostForm />} />
         <Route path="/admin/post/:postId/edit" element={<PostForm />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       {isLoading && <Loader />}
     </Router>

@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 const testimonialsData = [
   {
     id: 1,
-    text: "I could use it or rent it. The ongoing costs even before fixing it was a huge burden and very overwhelming, up until your team sold my house in only days. Your service was beyond my expectation.",
-    name: "Heather Benett",
-    location: "East Hampton, NY",
+    text: "VitaMed klinikasida davolanishdan juda mamnunman. Shifokorlar juda professional va mehribon. Quloq muammom to'liq hal qilindi. Barcha xodimlarga rahmat!",
+    name: "Dilnoza Karimova",
+    location: "Qo'qon, O'zbekiston",
     image: "https://avatars.mds.yandex.net/i?id=8da64a1e819ebc65cb3d8ca7a8ad149e_l-5419089-images-thumbs&n=13"
   },
   {
     id: 2,
-    text: "I inherited my grandparents house which needed desperate repairs before I could use it or rent it. The ongoing costs even before fixing it was a huge burden and very overwhelming, up until your team sold my house in only days. Your service was beyond my expectation.",
-    name: "Benett",
-    location: "East, NY",
+    text: "Burun operatsiyasini bu yerda qildirdim. Natija ajoyib! Shifokorlar juda tajribali va zamonaviy uskunalar ishlatiladi. Hamma narsadan mamnunman.",
+    name: "Bobur Tursunov",
+    location: "Farg'ona, O'zbekiston",
     image: "https://avatars.mds.yandex.net/i?id=a1915cd409cb21cc9e9564a3ee0bd0c8_l-2375701-images-thumbs&n=13"
   },
   // Qo'shimcha guvohliklarni bu yerga qo'shing
@@ -41,8 +41,8 @@ const Testimonial = () => {
     <div className="max-w-5xl mx-auto py-16 px-4 sm:px-6 lg:px-8 font-sans">
       {/* Sarlavha */}
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-extrabold" style={{ color: mainColor }}>Testimonials</h1>
-        <p className="mt-2 text-lg text-gray-500">See what people are saying.</p>
+        <h1 className="text-4xl font-extrabold" style={{ color: mainColor }}>Bemorlar Fikri</h1>
+        <p className="mt-2 text-lg text-gray-500">Bizning bemorlarimiz nima deyishadi.</p>
         <div className="w-10 h-1 mx-auto mt-2 rounded" style={{ background: mainColor }}></div>
       </div>
 

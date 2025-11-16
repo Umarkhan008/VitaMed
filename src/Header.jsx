@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../public/assets/logo.jpg'
 import bgVid from '../public/assets/main-bg4.mp4'
-import bgPoster from '../public/assets/main-bg.jpg'
+
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = React.useState(false);
@@ -18,7 +18,7 @@ const Header = () => {
                         muted
                         playsInline
                         preload="auto"
-                        poster={bgPoster}
+                        
                         className="w-full h-full object-cover object-center"
                     >
                         <source src={bgVid} type="video/mp4" />
@@ -37,12 +37,12 @@ const Header = () => {
                                     </svg>
                                     <span>A-1, Envanto HQ, Kokand</span>
                                 </div>
-                                <div className="flex items-center gap-2  text-sm font-medium">
+                                <a href="tel:+998939010660" className="flex items-center gap-2 text-sm font-medium hover:text-teal-600 transition-colors duration-300">
                                     <svg className="w-4 h-4 text-teal-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                                     </svg>
                                     <span>+998 93 901 06 60</span>
-                                </div>
+                                </a>
                                 <div className="flex items-center gap-2  text-sm font-medium">
                                     <svg className="w-4 h-4 text-teal-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -89,28 +89,28 @@ const Header = () => {
                                             24/7
                                         </span>
                                     </h1>
-                                    <p className="text-sm text-gray-500 m-0 font-medium">Quality Healthcare</p>
+                                    <p className="text-sm text-gray-500 m-0 font-medium">Sifatli Tibbiy Xizmat</p>
                                 </div>
                             </div>
 
                             {/* Desktop Navigation */}
                             <div className="hidden md:flex gap-8 items-center">
-                                <a href="/" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Home</a>
-                                <a href="/services" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Services</a>
+                                <a href="/" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Bosh sahifa</a>
+                                <a href="/services" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Xizmatlar</a>
                                 <a href="/blog" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Blog</a>
-                                <a href="#contact" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Contact</a>
+                                <a href="#contact" className="text-gray-800 no-underline font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 relative hover:text-teal-500 hover:bg-teal-50 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-teal-500 after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-4/5">Aloqa</a>
                             </div>
 
                             {/* CTA Button */}
                             <div className="hidden md:block flex-shrink-0">
-                                <button className="bg-teal-500 text-white border-none px-6 py-3 rounded-lg font-semibold text-sm cursor-pointer transition-all duration-300 shadow-sm hover:bg-teal-600 hover:-translate-y-0.5 hover:shadow-md">Book Appointment</button>
+                                <button className="bg-teal-500 text-white border-none px-6 py-3 rounded-lg font-semibold text-sm cursor-pointer transition-all duration-300 shadow-sm hover:bg-teal-600 hover:-translate-y-0.5 hover:shadow-md">Uchrashuv belgilash</button>
                             </div>
 
                             {/* Mobile Menu Toggle */}
                             <button 
                                 className="md:hidden flex flex-col gap-1 bg-transparent border-none cursor-pointer p-2 rounded transition-all duration-300 hover:bg-teal-50"
                                 onClick={() => setMenuOpen(!menuOpen)}
-                                aria-label="Toggle menu"
+                                aria-label="Menyuni ochish/yopish"
                             >
                                 <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 rounded ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
                                 <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 rounded ${menuOpen ? 'opacity-0' : ''}`}></span>
@@ -121,11 +121,11 @@ const Header = () => {
                         {/* Mobile Navigation */}
                         <div className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 transition-all duration-300 z-20 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`} style={{visibility: menuOpen ? 'visible' : 'hidden'}}>
                             <div className="p-6 flex flex-col gap-4">
-                                <a href="/" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Home</a>
-                                <a href="/services" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Services</a>
+                                <a href="/" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Bosh sahifa</a>
+                                <a href="/services" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Xizmatlar</a>
                                 <a href="/blog" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Blog</a>
-                                <a href="#contact" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Contact</a>
-                                <button className="bg-teal-500 text-white border-none px-6 py-4 rounded-lg font-semibold text-base cursor-pointer transition-all duration-300 mt-2 hover:bg-teal-600 hover:-translate-y-0.5 hover:shadow-md">Book Appointment</button>
+                                <a href="#contact" className="text-gray-800 no-underline font-semibold text-lg py-3 border-b border-gray-200/50 transition-all duration-300 hover:text-teal-500 hover:pl-2">Aloqa</a>
+                                <button className="bg-teal-500 text-white border-none px-6 py-4 rounded-lg font-semibold text-base cursor-pointer transition-all duration-300 mt-2 hover:bg-teal-600 hover:-translate-y-0.5 hover:shadow-md">Uchrashuv belgilash</button>
                             </div>
                         </div>
                     </div>
@@ -145,8 +145,8 @@ const Header = () => {
                             </p>
                         
                             <div className="flex gap-4 justify-center mb-12 flex-wrap">
-                                <button className="px-8 py-4 text-base font-bold rounded-lg border-none cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-teal-500 text-white hover:bg-teal-600 hover:-translate-y-1 hover:shadow-xl">READ MORE</button>
-                                <button className="px-8 py-4 text-base font-bold rounded-lg cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-transparent text-white border-2 border-white hover:bg-white hover:text-gray-800 hover:-translate-y-1 hover:shadow-xl">ABOUT US</button>
+                                <button className="px-8 py-4 text-base font-bold rounded-lg border-none cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-teal-500 text-white hover:bg-teal-600 hover:-translate-y-1 hover:shadow-xl">BATAFSIL</button>
+                                <button className="px-8 py-4 text-base font-bold rounded-lg cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-transparent text-white border-2 border-white hover:bg-white hover:text-gray-800 hover:-translate-y-1 hover:shadow-xl">BIZ HAQIMIZDA</button>
                             </div>
 
                             <div className="flex gap-8 justify-center flex-wrap">
@@ -180,7 +180,7 @@ const Header = () => {
                                     </div>
                                     <div className="flex-1">
                                         <div className="text-sm text-gray-600 mb-1">Qo'ng'iroq qiling</div>
-                                        <div className="text-lg font-bold text-gray-800">+998 93 901 06 60</div>
+                                        <a href="tel:+998939010660" className="text-lg font-bold text-gray-800 hover:text-teal-600 transition-colors duration-300 no-underline">+998 93 901 06 60</a>
                                     </div>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ const Loader = () => {
                         </svg>
                     </div>
                     <h2 className="text-2xl font-bold text-[#142959] text-center">VitaMed</h2>
-                    <p className="text-[#01bdb2] text-center mt-1">Quality Healthcare</p>
+                    <p className="text-[#01bdb2] text-center mt-1">Sifatli Tibbiy Xizmat</p>
                 </div>
 
                 {/* Spinner */}
@@ -23,7 +23,7 @@ const Loader = () => {
 
                 {/* Loading text */}
                 <div className="text-center">
-                    <p className="text-gray-600 text-lg font-medium mb-4">Loading...</p>
+                    <p className="text-gray-600 text-lg font-medium mb-4">Yuklanmoqda...</p>
                     <div className="w-48 bg-gray-200 rounded-full h-2 mx-auto">
                         <div className="bg-gradient-to-r from-[#01bdb2] to-[#142959] h-2 rounded-full animate-pulse"></div>
                     </div>

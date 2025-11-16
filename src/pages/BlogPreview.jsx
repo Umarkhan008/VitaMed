@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchBlogPosts } from './blogAPI.js'
+import { blogPosts } from './blogData.js'
 
 const BlogPreview = () => {
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const loadPosts = async () => {
-            try {
-                const fetchedPosts = await fetchBlogPosts()
-                setPosts(fetchedPosts.slice(0, 3)) // Only show first 3 posts
-            } catch (error) {
-                console.error('Error loading posts:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadPosts()
-    }, [])
+    const [posts] = useState(blogPosts.slice(0, 3)) // Only show first 3 posts
+    const [loading] = useState(false)
 
     if (loading) {
         return (

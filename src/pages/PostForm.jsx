@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Header from '../Header.jsx'
 import Footer from '../Footer.jsx'
 import { getPostById, createPost, updatePost, clearCache } from './blogAPI.js'
+import { isAuthenticated } from '../utils/auth.js'
 
 const PostForm = () => {
     const { postId } = useParams()
@@ -26,7 +27,7 @@ const PostForm = () => {
 
     useEffect(() => {
         // Check authentication
-        if (!localStorage.getItem('adminAuth')) {
+        if (!isAuthenticated()) {
             navigate('/admin/login')
             return
         }

@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from '../public/assets/img1.webp'
+import img1 from '../public/assets/brat2.jpg'
 
 const About = () => {
     return (
@@ -49,14 +49,14 @@ const About = () => {
                 {/* Text Content */}
                 <div className="max-w-xl w-full lg:ml-16">
                     <span className="text-[16px] sm:text-[18px] text-[#01bdb2] font-semibold mb-3 sm:mb-4 block border-b-2 border-[#01bdb2] w-fit pb-2">
-                        Welcome to VitaMed
+                        VitaMed ga xush kelibsiz
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#142959] mb-6 sm:mb-8 leading-tight">
                         Sog'lig'ingiz uchun eng yaxshi g'amxo'rlik
                     </h2>
                     <p className="text-gray-600 text-base sm:text-lg lg:text-lg mb-6 sm:mb-8 leading-relaxed">
-                    Tajribali shifokorlarimiz sizning eshitish, nafas olish va so‘zlash qobiliyatingizni tiklash uchun eng ilg‘or texnologiyalardan foydalanadi.
-                    Bizda quloq shang‘illashi, burun tiqilishi, tomoq og‘rishi va boshqa ENT muammolari chuqur tahlil qilinadi va samarali yechimlar taklif etiladi.
+                    Tajribali shifokorlarimiz sizning eshitish, nafas olish va so'zlash qobiliyatingizni tiklash uchun eng ilg'or texnologiyalardan foydalanadi.
+                    Bizda quloq shang'illashi, burun tiqilishi, tomoq og'rishi va boshqa ENT muammolari chuqur tahlil qilinadi va samarali yechimlar taklif etiladi.
                     </p>
                     <ul className="mb-8 sm:mb-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-4 sm:gap-y-6">
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
@@ -89,7 +89,7 @@ const About = () => {
                                     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                            
+                            BURUN MUAMMOLARI
                         </li>
                         <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
                             <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
@@ -112,7 +112,7 @@ const About = () => {
                         <div className="flex w-full flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 mt-8 sm:mt-12">
                             {/* Read More Button */}
                             <button className="w-full md:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#01bdb2] text-white rounded-xl font-bold text-[16px] sm:text-[18px] shadow-lg hover:bg-[#142959] hover:shadow-xl transition-all duration-300 min-w-[180px] sm:min-w-[200px] transform hover:scale-105">
-                                READ MORE
+                                BATAFSIL
                             </button>
                             {/* Phone Info */}
                             <div className="flex items-center gap-4 sm:gap-6 w-full md:w-auto min-w-[220px] sm:min-w-[250px] bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
@@ -122,8 +122,8 @@ const About = () => {
                                     </svg>
                                 </span>
                                 <div>    
-                                    <div className="font-bold text-[18px] sm:text-[22px] text-[#142959] leading-tight">+(000) 123456789</div>
-                                    <div className="text-gray-600 font-semibold text-[14px] sm:text-[16px] mt-1">Call us Anytime</div>
+                                    <div className="font-bold text-[18px] sm:text-[22px] text-[#142959] leading-tight">+998 93 901 06 60</div>
+                                    <div className="text-gray-600 font-semibold text-[14px] sm:text-[16px] mt-1">Har qanday vaqtda</div>
                                 </div>
                             </div>
                         </div>

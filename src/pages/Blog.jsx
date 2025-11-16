@@ -2,25 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Header from '../Header.jsx'
 import Footer from '../Footer.jsx'
 import { Link } from 'react-router-dom'
-import { fetchBlogPosts } from './blogAPI.js'
+import { blogPosts } from './blogData.js'
 
 const Blog = () => {
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const loadPosts = async () => {
-            try {
-                const fetchedPosts = await fetchBlogPosts()
-                setPosts(fetchedPosts)
-            } catch (error) {
-                console.error('Error loading posts:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadPosts()
-    }, [])
+    const [posts] = useState(blogPosts)
+    const [loading] = useState(false)
 
     if (loading) {
         return (
