@@ -17,7 +17,7 @@ import PostForm from './pages/PostForm.jsx'
 import Footer from './Footer.jsx'
 import BlogPreview from './pages/BlogPreview.jsx'
 import Contact from './pages/Contact.jsx';
-
+import ScrollToTopButton from "./ScrollToTopButton";
 const HomePage = () => (
   <>
     <Header />
@@ -122,6 +122,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       {isLoading && <Loader />}
+          <ScrollToTopButton />
     </Router>
   )
 }

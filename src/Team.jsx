@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import doctor1 from '../public/assets/bexruzbek.jpg'
 const teamMembers = [
   {
@@ -62,7 +62,7 @@ const LinkedinIcon = () => (
 
 const TeamCard = ({ member }) => {
   return (
-    <div className="group flex-shrink-0 w-full">
+    <div className="group flex-shrink-0 p-2 w-full">
       <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
         {/* Image Container */}
         <div className="relative h-96 overflow-hidden bg-gray-200">
@@ -101,8 +101,29 @@ const TeamCard = ({ member }) => {
 
 const Team = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const itemsPerView = 3
+  const [itemsPerView, setItemsPerView] = useState(3)
+
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1)
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2)
+      } else {
+        setItemsPerView(3)
+      }
+    }
+
+    updateItemsPerView()
+    window.addEventListener('resize', updateItemsPerView)
+    return () => window.removeEventListener('resize', updateItemsPerView)
+  }, [])
+
   const maxIndex = Math.max(0, teamMembers.length - itemsPerView)
+
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex))
+  }, [maxIndex])
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
@@ -136,7 +157,11 @@ const Team = () => {
             }}
           >
             {teamMembers.map((m) => (
-              <div key={m.name} className="w-1/3 px-4 flex-shrink-0">
+              <div
+                key={m.name}
+                className="px-4 flex-shrink-0"
+                style={{ width: `${100 / itemsPerView}%` }}
+              >
                 <TeamCard member={m} />
               </div>
             ))}
@@ -146,7 +171,7 @@ const Team = () => {
         {/* Navigation Arrows */}
         <button
           onClick={handlePrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="absolute left-4 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
           aria-label="Previous"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,7 +181,7 @@ const Team = () => {
 
         <button
           onClick={handleNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="absolute right-4 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
           aria-label="Next"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

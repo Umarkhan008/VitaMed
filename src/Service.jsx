@@ -6,9 +6,10 @@ const services = [
     id: "ent-consultation",
     title: "LOR Konsultatsiya",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-3 8.5V16a2 2 0 114 0v2.5" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <circle cx="12" cy="7" r="3" />
+        <path d="M6 20v-1a4 4 0 014-4h4a4 4 0 014 4v1" />
+        <path d="M9 11c.5 1 1.5 1.5 3 1.5s2.5-.5 3-1.5" />
       </svg>
     ),
     desc: "Quloq, burun va tomoq kasalliklari bo'yicha professional maslahat va tekshiruv xizmatlari.",
@@ -17,10 +18,11 @@ const services = [
     id: "hearing-tests",
     title: "Eshitish Tekshiruvi",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M3 11v3a1 1 0 001 1h1l4 4V7L5 11H4a1 1 0 00-1 1z" />
-        <path d="M13.5 8.5c.5.5.8 1.2.8 2s-.3 1.5-.8 2" />
-        <path d="M16.5 5.5c1.2 1.2 2 2.8 2 4.5s-.8 3.3-2 4.5" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <path d="M7 11a5 5 0 019-3" />
+        <path d="M7 11v2a3 3 0 003 3h1" />
+        <path d="M17 9a5 5 0 01-1.5 3.5" />
+        <circle cx="6" cy="18" r="1.5" />
       </svg>
     ),
     desc: "Audiometriya va boshqa zamonaviy usullar yordamida eshitish qobiliyatini tekshirish.",
@@ -29,10 +31,10 @@ const services = [
     id: "nose-surgery",
     title: "Burun Operatsiyalari",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M12 3c-1.5 0-3 1-4 2.5C7 7 6.5 8.5 7 10c.5 1.5 2 2.5 3.5 3L12 14l1.5-1c1.5-.5 3-1.5 3.5-3 .5-1.5 0-3-1-4.5C15 4 13.5 3 12 3z" />
-        <circle cx="10" cy="8" r="1" />
-        <circle cx="14" cy="8" r="1" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <path d="M10 3c-1.5 2-2 3.5-2 5 0 1.5.5 3 1.5 4.5L11 15" />
+        <path d="M14 3c1.5 2 2 3.5 2 5 0 1.5-.5 3-1.5 4.5L13 15" />
+        <path d="M10 19a2 2 0 004 0" />
       </svg>
     ),
     desc: "Rinoplastika, septoplastika va boshqa burun operatsiyalari eng yuqori sifatda.",
@@ -41,12 +43,10 @@ const services = [
     id: "throat-treatment",
     title: "Tomoq Davolash",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4" />
-        <path d="M12 8V6a2 2 0 00-4 0v2" />
-        <path d="M12 8V6a2 2 0 014 0v2" />
-        <path d="M8 12v4c0 2.21 1.79 4 4 4s4-1.79 4-4v-4" />
-        <path d="M10 14h4" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <rect x="9" y="3" width="6" height="8" rx="3" />
+        <path d="M12 11v6" />
+        <path d="M8 14c0 2.2 1.8 4 4 4s4-1.8 4-4" />
       </svg>
     ),
     desc: "Tonsillektomiya, adenoidektomiya va boshqa tomoq kasalliklarini davolash.",
@@ -55,10 +55,10 @@ const services = [
     id: "ear-cleaning",
     title: "Quloq Tozalash",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M12 2C8 2 5 5 5 9v6c0 1.1.9 2 2 2h2v-2H7V9c0-2.8 2.2-5 5-5s5 2.2 5 5v6h-2v2h2c1.1 0 2-.9 2-2V9c0-4-3-7-7-7z" />
-        <circle cx="7" cy="18" r="2" />
-        <circle cx="17" cy="18" r="2" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <path d="M8 10a4 4 0 018 0c0 1.5-.5 2.5-1.5 3.5L13 15" />
+        <path d="M7 10a5 5 0 0110 0c0 2-1 3.5-2.5 4.8L12 18" />
+        <circle cx="7" cy="18" r="1.5" />
       </svg>
     ),
     desc: "Professional quloq tozalash va quloq tiqinlarini olib tashlash xizmatlari.",
@@ -67,11 +67,11 @@ const services = [
     id: "voice-therapy",
     title: "Ovoz Terapiyasi",
     icon: (
-      <svg width="48" height="48" fill="none" stroke="#18c2b8" strokeWidth="2.5" viewBox="0 0 24 24">
-        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
-        <path d="M19 10v2a7 7 0 01-14 0v-2" />
-        <path d="M12 19v4" />
-        <path d="M8 23h8" />
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <rect x="9" y="4" width="6" height="10" rx="3" />
+        <path d="M5 10a7 7 0 0014 0" />
+        <path d="M12 18v3" />
+        <path d="M9 21h6" />
       </svg>
     ),
     desc: "Ovoz buzilishlari va nutq muammolarini davolash uchun maxsus terapiya.",

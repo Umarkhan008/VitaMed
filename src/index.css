@@ -755,3 +755,58 @@
 .text-gray-600 { color: #4b5563; }
 .text-gray-800 { color: #1f2937; }
 .text-teal-500 { color: #14b8a6; }
+
+.scroll-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* eski background o'rniga bitta rang */
+  background: rgb(0, 59, 135);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+/* Ko‘rinadigan holatga o'tganda animatsiya */
+.scroll-top-btn--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  animation: scrollTopFadeIn 0.35s ease-out;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+  background: rgb(0, 47, 108);
+}
+/* O'qcha o'zgarmasdan qoladi */
+.scroll-top-arrow {
+  width: 16px;
+  height: 16px;
+  border-left: 2.5px solid #ffffff;
+  border-top: 2.5px solid #ffffff;
+  transform: rotate(45deg) translateY(2px);
+}
+
+/* Pastdan tepaga smooth chiqish keyframes */
+@keyframes scrollTopFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

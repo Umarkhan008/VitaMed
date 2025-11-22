@@ -7,7 +7,7 @@ import { blogPosts } from './blogData.js'
 const Blog = () => {
     const [posts] = useState(blogPosts)
     const [loading] = useState(false)
-
+    
     if (loading) {
         return (
             <>

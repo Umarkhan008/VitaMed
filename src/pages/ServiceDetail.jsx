@@ -74,6 +74,206 @@ const ServiceDetail = () => {
   const { serviceId } = useParams()
 
   const serviceDetails = {
+    "ent-consultation": {
+      title: "LOR Konsultatsiya",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <circle cx="12" cy="7" r="3" />
+          <path d="M6 20v-1a4 4 0 014-4h4a4 4 0 014 4v1" />
+          <path d="M9 11c.5 1 1.5 1.5 3 1.5s2.5-.5 3-1.5" />
+        </svg>
+      ),
+      description: "Quloq, burun va tomoq kasalliklari bo'yicha to'liq konsultatsiya va diagnostika xizmatlari. Birinchi tashrifdan boshlab individual davolash rejasini tuzamiz.",
+      services: [
+        "Boshlang'ich diagnostika",
+        "Shifokor tavsiyalari",
+        "Laborator tekshiruvlar",
+        "Individual davolash rejasi",
+        "Nazorat qabul",
+        "Profilaktik maslahatlar"
+      ],
+      doctors: [
+        {
+          name: "Dr. Muxtorov Behruz",
+          specialization: "LOR shifokor",
+          experience: "3 yil",
+          image: "/api/placeholder/150/150"
+        },
+        {
+          name: "Dr. Dilnoza Tursunova",
+          specialization: "LOR shifokor",
+          experience: "12 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "info@vitamed.uz",
+        address: "VitaMed klinikasi, Toshkent"
+      }
+    },
+    "hearing-tests": {
+      title: "Eshitish Tekshiruvi",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <path d="M7 11a5 5 0 019-3" />
+          <path d="M7 11v2a3 3 0 003 3h1" />
+          <path d="M17 9a5 5 0 01-1.5 3.5" />
+          <circle cx="6" cy="18" r="1.5" />
+        </svg>
+      ),
+      description: "Audiometriya va boshqa zamonaviy tekshiruvlar orqali eshitish qobiliyatini baholash hamda mos davolash usullarini tanlash.",
+      services: [
+        "Kompyuter audiometriyasi",
+        "Bolalar eshitishini tekshirish",
+        "Quloq ichidagi bosimni o'lchash",
+        "Eshitish apparatini sozlash",
+        "Profilaktik tekshiruvlar",
+        "Reabilitatsiya dasturlari"
+      ],
+      doctors: [
+        {
+          name: "Dr. Bobur Rahimov",
+          specialization: "Audiolog",
+          experience: "10 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "hearing@vitamed.uz",
+        address: "VitaMed Audiologiya markazi"
+      }
+    },
+    "nose-surgery": {
+      title: "Burun Operatsiyalari",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <path d="M10 3c-1.5 2-2 3.5-2 5 0 1.5.5 3 1.5 4.5L11 15" />
+          <path d="M14 3c1.5 2 2 3.5 2 5 0 1.5-.5 3-1.5 4.5L13 15" />
+          <path d="M10 19a2 2 0 004 0" />
+        </svg>
+      ),
+      description: "Rinoplastika, septoplastika va sinus operatsiyalarini yuqori tajribaga ega jarrohlar bajaradi.",
+      services: [
+        "Rinoplastika",
+        "Septoplastika",
+        "Sinus jarrohligi",
+        "Burun tiqilishi davosi",
+        "Jarrohlikdan keyingi parvarish",
+        "Konsultatsiya"
+      ],
+      doctors: [
+        {
+          name: "Dr. Malika Yusupova",
+          specialization: "Burun jarrohi",
+          experience: "13 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "surgery@vitamed.uz",
+        address: "VitaMed jarrohlik markazi"
+      }
+    },
+    "throat-treatment": {
+      title: "Tomoq Davolash",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <rect x="9" y="3" width="6" height="8" rx="3" />
+          <path d="M12 11v6" />
+          <path d="M8 14c0 2.2 1.8 4 4 4s4-1.8 4-4" />
+        </svg>
+      ),
+      description: "Tonsillit, faringit va boshqa tomoq kasalliklarini konservativ yoki jarrohlik usulida davolash.",
+      services: [
+        "Tonsillektomiya",
+        "Adenoidektomiya",
+        "Lazer terapiyasi",
+        "Kronik kasalliklarni davolash",
+        "Nazorat tekshiruvlari",
+        "Ovoz mashqlari"
+      ],
+      doctors: [
+        {
+          name: "Dr. Dilnoza Tursunova",
+          specialization: "LOR shifokor",
+          experience: "12 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "throat@vitamed.uz",
+        address: "VitaMed LOR bo'limi"
+      }
+    },
+    "ear-cleaning": {
+      title: "Quloq Tozalash",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <path d="M8 10a4 4 0 018 0c0 1.5-.5 2.5-1.5 3.5L13 15" />
+          <path d="M7 10a5 5 0 0110 0c0 2-1 3.5-2.5 4.8L12 18" />
+          <circle cx="7" cy="18" r="1.5" />
+        </svg>
+      ),
+      description: "Professional quloq tozalash, tiqinlarni olib tashlash va yallig'lanishni davolash.",
+      services: [
+        "Quloq tiqinini olib tashlash",
+        "Yallig'lanishni davolash",
+        "Profilaktik tozalash",
+        "Bolalar qulog'ini parvarish",
+        "Quloq gigiyenasi bo'yicha maslahat",
+        "Uy sharoitida parvarish"
+      ],
+      doctors: [
+        {
+          name: "Dr. Bobur Rahimov",
+          specialization: "LOR shifokor",
+          experience: "10 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "earcare@vitamed.uz",
+        address: "VitaMed LOR bo'limi"
+      }
+    },
+    "voice-therapy": {
+      title: "Ovoz Terapiyasi",
+      icon: (
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#18c2b8" strokeWidth="2.5">
+          <rect x="9" y="4" width="6" height="10" rx="3" />
+          <path d="M5 10a7 7 0 0014 0" />
+          <path d="M12 18v3" />
+          <path d="M9 21h6" />
+        </svg>
+      ),
+      description: "Nutq va ovoz buzilishlarini jarrohliksiz davolash uchun logoped va foniatrlar tomonidan olib boriladigan terapiya.",
+      services: [
+        "Logopedik mashg'ulotlar",
+        "Ovoz bog'lamlarini mustahkamlash",
+        "Nutqni tiklash",
+        "Professional ovoz parvarishi",
+        "Uy mashqlari",
+        "Kuzatuv sesiyalari"
+      ],
+      doctors: [
+        {
+          name: "Dr. Malika Yusupova",
+          specialization: "Foniatr",
+          experience: "13 yil",
+          image: "/api/placeholder/150/150"
+        }
+      ],
+      contact: {
+        phone: "+998 93 901 06 60",
+        email: "voice@vitamed.uz",
+        address: "VitaMed Reabilitatsiya markazi"
+      }
+    },
     cardiology: {
       title: "Kardiologiya",
       icon: (
