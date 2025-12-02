@@ -11,7 +11,7 @@ const Loader = () => {
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-[#142959] text-center">VitaMed</h2>
+                    <h2 className="text-2xl font-bold text-[#142959] text-center">Qo'qon Lor</h2>
                     <p className="text-[#01bdb2] text-center mt-1">Sifatli Tibbiy Xizmat</p>
                 </div>
 

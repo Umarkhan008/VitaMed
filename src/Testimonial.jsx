@@ -5,7 +5,7 @@ const testimonialsData = [
   {
     id: 1,
     text: "VitaMed klinikasida davolanishdan juda mamnunman. Shifokorlar juda professional va mehribon. Quloq muammom to'liq hal qilindi. Barcha xodimlarga rahmat!",
-    name: "Dilnoza Karimova",
+    name: "Rustam Xolmatov",
     location: "Qo'qon, O'zbekiston",
     image: "https://avatars.mds.yandex.net/i?id=8da64a1e819ebc65cb3d8ca7a8ad149e_l-5419089-images-thumbs&n=13"
   },

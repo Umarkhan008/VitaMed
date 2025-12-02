@@ -1,12 +1,8 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaFacebook, FaInstagram, FaTelegram, FaWhatsapp } from 'react-icons/fa';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import vid from "../../public/assets/prewiev.mp4"
 
 const Contact = () => {
-  const position = [41.311081, 69.240562];
-
   return (
     <div className="min-h-screen w-full bg-white">
       {/* Hero Banner */}
@@ -67,25 +63,16 @@ const Contact = () => {
           <div className="space-y-6">
             {/* Map */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden h-64 lg:h-80">
-              <MapContainer 
-                center={position} 
-                zoom={15} 
-                style={{ height: '100%', width: '100%' }}
-                scrollWheelZoom={false}
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={position}>
-                  <Popup>
-                    <div className="text-center">
-                      <h4 className="font-bold text-teal-600 text-sm">VitaMed Shifoxonasi</h4>
-                      <p className="text-xs text-gray-600">Navoiy ko'chasi, 12-uy</p>
-                    </div>
-                  </Popup>
-                </Marker>
-              </MapContainer>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d442.2655432107107!2d70.9471556302561!3d40.51870735343428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38baef0063a02ec1%3A0xa79e2ae2167f3956!2sQoqon%20lor%2024%2F7!5e0!3m2!1sru!2s!4v1764651931895!5m2!1sru!2s"
+                width="600"
+                height="450"
+                style={{ border: 0, width: '100%', height: '100%' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="VitaMed Klinikasi xaritasi"
+              ></iframe>
             </div>
 
             {/* Working Hours */}

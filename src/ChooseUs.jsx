@@ -1,5 +1,5 @@
 import React from 'react'
-import doctor from "../public/assets/bosh.jpg"
+import doctor from "../public/assets/mainDoctor.png"
 const items = [
   {
     id: 1,
@@ -50,7 +50,7 @@ const ChooseUs = () => {
               className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md"
             />
             <div>
-              <h4 className="text-xl font-semibold text-[#142959]">Dr. Otajon Kimsanov</h4>
+              <h4 className="text-xl font-semibold text-[#142959]">Dr. G‘afurov Abdushoxid Maxmudovich</h4>
               <p className="text-[#01bdb2] font-medium">BOSH SHIFOKOR</p>
             </div>
           </div>

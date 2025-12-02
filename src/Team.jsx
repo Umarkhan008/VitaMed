@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import doctor1 from '../public/assets/bexruzbek.jpg'
+import doctor2 from '../public/assets/bosh.jpg'
+import doctor3 from '../public/assets/mainDoctor2.png'
+import doctor4 from '../public/assets/anot.png'
 const teamMembers = [
   {
     name: 'Dr. Muxtorov Behruz',
@@ -8,22 +11,22 @@ const teamMembers = [
     img: doctor1,
   },
   {
-    name: 'Dr. Dilnoza Tursunova',
+    name: 'Dr. G‘afurov Abdushoxid',
     role: 'LOR SHIFOKOR',
-    experience: '12 yil',
-    img: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1200&auto=format&fit=crop',
+    experience: '15 yil',
+    img: doctor3,
   },
   {
-    name: 'Dr. Bobur Rahimov',
+    name: 'Dr. Kimsanov Otajon',
     role: 'LOR SHIFOKOR',
-    experience: '10 yil',
-    img: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop',
+    experience: '12 yil',
+    img: doctor2,
   },
   {
     name: 'Dr. Malika Yusupova',
     role: 'LOR SHIFOKOR',
     experience: '13 yil',
-    img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop',
+    img: doctor4,
   },
 ]
 
@@ -44,19 +47,19 @@ const ShareIcon = () => (
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.75 8.44-4.92 8.44-9.94z"/>
+    <path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.75 8.44-4.92 8.44-9.94z" />
   </svg>
 )
 
 const TwitterIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M22.46 6c-.77.34-1.6.57-2.46.68a4.27 4.27 0 001.87-2.36 8.56 8.56 0 01-2.71 1.03 4.26 4.26 0 00-7.26 3.88 12.09 12.09 0 01-8.78-4.45 4.26 4.26 0 001.32 5.68 4.23 4.23 0 01-1.93-.53v.05a4.26 4.26 0 003.42 4.18 4.3 4.3 0 01-1.92.07 4.27 4.27 0 003.98 2.96A8.54 8.54 0 012 19.54a12.06 12.06 0 006.54 1.92c7.85 0 12.14-6.5 12.14-12.13 0-.18 0-.36-.01-.54A8.67 8.67 0 0022.46 6z"/>
+    <path d="M22.46 6c-.77.34-1.6.57-2.46.68a4.27 4.27 0 001.87-2.36 8.56 8.56 0 01-2.71 1.03 4.26 4.26 0 00-7.26 3.88 12.09 12.09 0 01-8.78-4.45 4.26 4.26 0 001.32 5.68 4.23 4.23 0 01-1.93-.53v.05a4.26 4.26 0 003.42 4.18 4.3 4.3 0 01-1.92.07 4.27 4.27 0 003.98 2.96A8.54 8.54 0 012 19.54a12.06 12.06 0 006.54 1.92c7.85 0 12.14-6.5 12.14-12.13 0-.18 0-.36-.01-.54A8.67 8.67 0 0022.46 6z" />
   </svg>
 )
 
 const LinkedinIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.39V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43A2.06 2.06 0 113.27 5.37a2.06 2.06 0 012.07 2.06zM6.78 20.45H3.56V9h3.22v11.45z"/>
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.39V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43A2.06 2.06 0 113.27 5.37a2.06 2.06 0 012.07 2.06zM6.78 20.45H3.56V9h3.22v11.45z" />
   </svg>
 )
 
@@ -80,7 +83,7 @@ const TeamCard = ({ member }) => {
             </div>
           </div>
         </div>
-        
+
         {/* Content Container */}
         <div className="p-8 text-center">
           <h3 className="text-2xl font-extrabold text-[#142959] mb-2">
@@ -196,9 +199,8 @@ const Team = () => {
           <button
             key={index}
             onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
