@@ -3,6 +3,7 @@ import doctor1 from '../public/assets/bexruzbek.jpg'
 import doctor2 from '../public/assets/bosh.jpg'
 import doctor3 from '../public/assets/mainDoctor2.png'
 import doctor4 from '../public/assets/anot.png'
+import doctor5 from '../public/assets/doctor5.jpg'
 const teamMembers = [
   {
     name: 'Dr. Muxtorov Behruz',
@@ -23,10 +24,10 @@ const teamMembers = [
     img: doctor2,
   },
   {
-    name: 'Dr. Malika Yusupova',
+    name: 'Dr. Ortiqboyev Oybek',
     role: 'LOR SHIFOKOR',
-    experience: '13 yil',
-    img: doctor4,
+    experience: '4 yil',
+    img: doctor5,
   },
 ]
 

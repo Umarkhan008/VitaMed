@@ -66,7 +66,7 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-semibold text-lg mb-5">Bog'lanish</h4>
                         <ul className="space-y-3 text-sm">
-                            <li className="flex items-center gap-2"><span className="text-teal-500">📍</span> A-1, Envanto HQ, Kokand</li>
+                            <li className="flex items-center gap-2"><span className="text-teal-500">📍</span> Qoqon shaxar shoxruxobod kuchasi 4D-uy</li>
                             <li className="flex items-center gap-2"><span className="text-teal-500">📞</span> +998 93 901 06 60</li>
                             <li className="flex items-center gap-2"><span className="text-teal-500">✉️</span> info@vitamed.uz</li>
                         </ul>

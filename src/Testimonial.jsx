@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import user1 from "../public/assets/user.png"
+import user2 from "../public/assets/user2.png"
 // Guvohliklar ma'lumoti
 const testimonialsData = [
   {
@@ -7,14 +8,14 @@ const testimonialsData = [
     text: "VitaMed klinikasida davolanishdan juda mamnunman. Shifokorlar juda professional va mehribon. Quloq muammom to'liq hal qilindi. Barcha xodimlarga rahmat!",
     name: "Rustam Xolmatov",
     location: "Qo'qon, O'zbekiston",
-    image: "https://avatars.mds.yandex.net/i?id=8da64a1e819ebc65cb3d8ca7a8ad149e_l-5419089-images-thumbs&n=13"
+    image: user1
   },
   {
     id: 2,
     text: "Burun operatsiyasini bu yerda qildirdim. Natija ajoyib! Shifokorlar juda tajribali va zamonaviy uskunalar ishlatiladi. Hamma narsadan mamnunman.",
-    name: "Bobur Tursunov",
+    name: "Shahnoza Umarova",
     location: "Farg'ona, O'zbekiston",
-    image: "https://avatars.mds.yandex.net/i?id=a1915cd409cb21cc9e9564a3ee0bd0c8_l-2375701-images-thumbs&n=13"
+    image: user2
   },
   // Qo'shimcha guvohliklarni bu yerga qo'shing
 ];

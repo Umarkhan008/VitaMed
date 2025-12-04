@@ -53,7 +53,7 @@ const Contact = () => {
                 <FaMapMarkerAlt className="text-cyan-600 mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-gray-800 text-sm mb-1">Manzil</h3>
-                  <p className="text-gray-700 text-sm">Toshkent shahri, Mirzo Ulug'bek tumani, Navoiy ko'chasi, 12-uy</p>
+                  <p className="text-gray-700 text-sm">Qoqon shaxar shoxruxobod kuchasi 4D-uy</p>
                 </div>
               </div>
             </div>
@@ -83,16 +83,8 @@ const Contact = () => {
               </h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-700">Dushanba - Juma</span>
-                  <span className="font-semibold text-teal-700">08:00 - 18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-700">Shanba</span>
-                  <span className="font-semibold text-teal-700">09:00 - 16:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-700">Yakshanba</span>
-                  <span className="font-semibold text-red-500">Yopiq</span>
+                  <span className="text-gray-700">Har kuni</span>
+                  <span className="font-semibold text-teal-700">24/7</span>
                 </div>
               </div>
             </div>
