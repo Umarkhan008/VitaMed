@@ -39,7 +39,7 @@ const About = () => {
                         {/* Floating statistics card */}
                         <div className="absolute -bottom-2 -left-4 sm:-left-8 bg-white p-4 sm:p-6 rounded-2xl shadow-xl z-20 min-w-[140px] sm:min-w-[160px]">
                             <div className="text-center">
-                                <div className="text-2xl sm:text-3xl font-bold text-[#01bdb2]">15+</div>
+                                <div className="text-2xl sm:text-3xl font-bold text-[#01bdb2]">12+</div>
                                 <div className="text-sm sm:text-base font-semibold text-[#142959]">Yillik Tajriba</div>
                             </div>
                         </div>

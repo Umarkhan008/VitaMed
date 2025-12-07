@@ -6,23 +6,32 @@ const services = [
     id: "ent-consultation",
     title: "LOR Konsultatsiya",
     icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <circle cx="12" cy="7" r="3" />
-        <path d="M6 20v-1a4 4 0 014-4h4a4 4 0 014 4v1" />
-        <path d="M9 11c.5 1 1.5 1.5 3 1.5s2.5-.5 3-1.5" />
-      </svg>
+   <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 12a4 4 0 1 0-4-4" />
+  <path d="M8 8v6a4 4 0 1 0 8 0V8" />
+  <path d="M16 8a4 4 0 1 0-4-4" />
+  <path d="M12 20v2M9 22h6" />
+</svg>
+
     ),
     desc: "Quloq, burun va tomoq kasalliklari bo'yicha professional maslahat va tekshiruv xizmatlari.",
   },
   {
+    
     id: "hearing-tests",
     title: "Eshitish Tekshiruvi",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <path d="M7 11a5 5 0 019-3" />
-        <path d="M7 11v2a3 3 0 003 3h1" />
-        <path d="M17 9a5 5 0 01-1.5 3.5" />
-        <circle cx="6" cy="18" r="1.5" />
+        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v6" />
+        <path d="M12 17v6" />
+        <path d="M4.22 4.22l4.24 4.24" />
+        <path d="M15.54 15.54l4.24 4.24" />
+        <path d="M1 12h6" />
+        <path d="M17 12h6" />
+        <path d="M4.22 19.78l4.24-4.24" />
+        <path d="M15.54 8.46l4.24-4.24" />
       </svg>
     ),
     desc: "Audiometriya va boshqa zamonaviy usullar yordamida eshitish qobiliyatini tekshirish.",
@@ -32,9 +41,9 @@ const services = [
     title: "Burun Operatsiyalari",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <path d="M10 3c-1.5 2-2 3.5-2 5 0 1.5.5 3 1.5 4.5L11 15" />
-        <path d="M14 3c1.5 2 2 3.5 2 5 0 1.5-.5 3-1.5 4.5L13 15" />
-        <path d="M10 19a2 2 0 004 0" />
+        <path d="M3 12h18m-9-9v18" />
+        <path d="M7 7l10 10M17 7L7 17" />
+        <circle cx="12" cy="12" r="2" />
       </svg>
     ),
     desc: "Rinoplastika, septoplastika va boshqa burun operatsiyalari eng yuqori sifatda.",
@@ -44,9 +53,10 @@ const services = [
     title: "Tomoq Davolash",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <rect x="9" y="3" width="6" height="8" rx="3" />
-        <path d="M12 11v6" />
-        <path d="M8 14c0 2.2 1.8 4 4 4s4-1.8 4-4" />
+        <rect x="3" y="8" width="18" height="10" rx="2" />
+        <path d="M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2" />
+        <line x1="12" y1="11" x2="12" y2="13" />
+        <line x1="12" y1="15" x2="12" y2="17" />
       </svg>
     ),
     desc: "Tonsillektomiya, adenoidektomiya va boshqa tomoq kasalliklarini davolash.",
@@ -56,9 +66,9 @@ const services = [
     title: "Quloq Tozalash",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <path d="M8 10a4 4 0 018 0c0 1.5-.5 2.5-1.5 3.5L13 15" />
-        <path d="M7 10a5 5 0 0110 0c0 2-1 3.5-2.5 4.8L12 18" />
-        <circle cx="7" cy="18" r="1.5" />
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+        <circle cx="12" cy="12" r="2" fill="#01bdb2" />
       </svg>
     ),
     desc: "Professional quloq tozalash va quloq tiqinlarini olib tashlash xizmatlari.",
@@ -68,10 +78,13 @@ const services = [
     title: "Ovoz Terapiyasi",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
-        <rect x="9" y="4" width="6" height="10" rx="3" />
-        <path d="M5 10a7 7 0 0014 0" />
-        <path d="M12 18v3" />
-        <path d="M9 21h6" />
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z" />
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+        <line x1="12" y1="19" x2="12" y2="23" />
+        <line x1="8" y1="23" x2="16" y2="23" />
+        <circle cx="12" cy="8" r="1" />
+        <circle cx="12" cy="11" r="1" />
+        <circle cx="12" cy="14" r="1" />
       </svg>
     ),
     desc: "Ovoz buzilishlari va nutq muammolarini davolash uchun maxsus terapiya.",
