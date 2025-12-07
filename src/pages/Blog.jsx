@@ -13,7 +13,7 @@ const Blog = () => {
             <>
                 <Header />
                 <main className="bg-white">
-                    <section className="py-20 bg-gray-50">
+                    <section className="py-20 bg-white">
                         <div className="max-w-7xl mx-auto px-4 text-center">
                             <div className="animate-pulse">
                                 <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-4"></div>
