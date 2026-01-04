@@ -3,7 +3,7 @@ import img1 from '../public/assets/brat2.jpg'
 
 const About = () => {
     return (
-        <div className='w-full bg-gray-50'>
+        <div id="about" className='w-full bg-gray-50'>
             <section className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 py-16 sm:py-20 px-4 lg:px-16">
                 {/* Images */}
                 <div className="relative flex-shrink-0 w-full lg:w-auto mb-10 lg:mb-0">
@@ -48,7 +48,7 @@ const About = () => {
                 </div>
                 {/* Text Content */}
                 <div className="max-w-xl w-full lg:ml-16">
-                    <span className="text-[16px] sm:text-[18px] text-[#01bdb2] font-semibold mb-3 sm:mb-4 block border-b-2 border-[#01bdb2] w-fit pb-2">
+                    <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">
                         VitaMed ga xush kelibsiz
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#142959] mb-6 sm:mb-8 leading-tight">

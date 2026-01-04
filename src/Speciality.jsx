@@ -28,7 +28,7 @@ const Services = () => {
         <div className='w-full'>
             <section className='w-full max-w-[1400px] mx-auto py-10 max-lg:pt-20 flex flex-col items-center'>
                 <div className='mb-6'>
-                    <span className='px-6 py-2 bg-white rounded-xl shadow text-[#01bdb2] font-semibold text-lg'>OUR SPECIALITY</span>
+                    <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">OUR SPECIALITY</span>
                 </div>
                 <h2 className='text-4xl font-bold text-[var(--trend-color)] mb-10 text-center'>Nima uchun biz ?</h2>
                 <div className='grid w-full max-w-[1400px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl px-2 max-lg:px-5 max-lg:gap-6'>

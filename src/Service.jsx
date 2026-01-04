@@ -3,20 +3,6 @@ import { Link } from 'react-router-dom'
 
 const services = [
   {
-    id: "ent-consultation",
-    title: "LOR Konsultatsiya",
-    icon: (
-   <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 12a4 4 0 1 0-4-4" />
-  <path d="M8 8v6a4 4 0 1 0 8 0V8" />
-  <path d="M16 8a4 4 0 1 0-4-4" />
-  <path d="M12 20v2M9 22h6" />
-</svg>
-
-    ),
-    desc: "Quloq, burun va tomoq kasalliklari bo'yicha professional maslahat va tekshiruv xizmatlari.",
-  },
-  {
     
     id: "hearing-tests",
     title: "Eshitish Tekshiruvi",
@@ -38,7 +24,7 @@ const services = [
   },
   {
     id: "nose-surgery",
-    title: "Burun Operatsiyalari",
+    title: "Rinoplastika",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
         <path d="M3 12h18m-9-9v18" />
@@ -50,7 +36,7 @@ const services = [
   },
   {
     id: "throat-treatment",
-    title: "Tomoq Davolash",
+    title: "Adenotomiya",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
         <rect x="3" y="8" width="18" height="10" rx="2" />
@@ -63,7 +49,7 @@ const services = [
   },
   {
     id: "ear-cleaning",
-    title: "Quloq Tozalash",
+    title: "Septoplastika",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
@@ -75,7 +61,7 @@ const services = [
   },
   {
     id: "voice-therapy",
-    title: "Ovoz Terapiyasi",
+    title: "Full Face",
     icon: (
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z" />
@@ -88,6 +74,22 @@ const services = [
       </svg>
     ),
     desc: "Ovoz buzilishlari va nutq muammolarini davolash uchun maxsus terapiya.",
+  },
+  {
+    id: "tonsillotomiya",
+    title: "Tonsillotomiya | Tonsillektomiya",
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01bdb2" strokeWidth="2">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z" />
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+        <line x1="12" y1="19" x2="12" y2="23" />
+        <line x1="8" y1="23" x2="16" y2="23" />
+        <circle cx="12" cy="8" r="1" />
+        <circle cx="12" cy="11" r="1" />
+        <circle cx="12" cy="14" r="1" />
+      </svg>
+    ),
+    desc: "Tonsillotomiya va tonsillektomiya operatsiyalari.",
   },
 ];
 
@@ -110,11 +112,11 @@ const ServiceBg = () => (
 
 const Service = () => {
   return (
-    <div className="relative w-full min-h-screen bg-[#18c2b8] overflow-hidden">
+    <div id="services" className="relative w-full min-h-screen bg-[#18c2b8] overflow-hidden" style={{ scrollMarginTop: '80px' }}>
       <ServiceBg />
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto text-center mb-10">
-          <div className="text-[#18c2b8] text-lg font-semibold mb-2 bg-white/80 px-4 py-2 rounded inline-block">Xizmatlar</div>
+          <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">Xizmatlar</span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Bizning Tibbiy Xizmatlarimiz</h2>
           <p className="text-white/80 mb-10 max-w-2xl mx-auto">
             Quloq, burun va tomoq kasalliklari bo'yicha eng zamonaviy va sifatli tibbiy xizmatlarni taqdim etamiz.

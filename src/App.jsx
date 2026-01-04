@@ -11,22 +11,24 @@ import Loader from './Loader.jsx'
 import ServiceDetail from './pages/ServiceDetail.jsx'
 import Blog from './pages/Blog.jsx'
 import BlogPost from './pages/BlogPost.jsx'
-import AdminLogin from './pages/AdminLogin.jsx'
-import AdminDashboard from './pages/AdminDashboard.jsx'
-import PostForm from './pages/PostForm.jsx'
 import Footer from './Footer.jsx'
 import BlogPreview from './pages/BlogPreview.jsx'
+import ServicesPage from './pages/ServicesPage.jsx'
 import Contact from './pages/Contact.jsx';
 import ScrollToTopButton from "./ScrollToTopButton";
-const HomePage = () => (
+import ScrollToTop from './utils/ScrollToTop';
+import { fetchBlogPosts } from './pages/blogAPI.js'
+import { fetchTeamMembers } from './pages/teamAPI.js'
+
+const HomePage = ({ blogData, teamData }) => (
   <>
     <Header />
     <Speciality />
+    <Team initialData={teamData} />
     <About />
     <Service />
-    <BlogPreview />
+    <BlogPreview initialData={blogData} />
     <ChooseUs />
-    <Team />
     <Testimonial />
     <Contact />
     <Footer />
@@ -35,11 +37,36 @@ const HomePage = () => (
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const [blogData, setBlogData] = useState([])
+  const [teamData, setTeamData] = useState([])
 
   useEffect(() => {
     const detachListeners = []
+    let assetsLoaded = false
+    let dataLoaded = false
 
-    const markDone = () => setIsLoading(false)
+    const checkAllDone = () => {
+      if (assetsLoaded && dataLoaded) {
+        setIsLoading(false)
+        document.documentElement.style.overflow = ''
+      }
+    }
+
+    const startDataFetch = async () => {
+      try {
+        const [posts, members] = await Promise.all([
+          fetchBlogPosts(),
+          fetchTeamMembers()
+        ])
+        setBlogData(posts)
+        setTeamData(members)
+      } catch (error) {
+        console.error('Initial data fetch failed:', error)
+      } finally {
+        dataLoaded = true
+        checkAllDone()
+      }
+    }
 
     const startAssetWatch = () => {
       const imageNodes = Array.from(document.querySelectorAll('img'))
@@ -47,7 +74,8 @@ const App = () => {
 
       const totalTargets = imageNodes.length + videoNodes.length
       if (totalTargets === 0) {
-        markDone()
+        assetsLoaded = true
+        checkAllDone()
         return
       }
 
@@ -55,7 +83,8 @@ const App = () => {
       const handleOne = () => {
         loadedTargets += 1
         if (loadedTargets >= totalTargets) {
-          markDone()
+          assetsLoaded = true
+          checkAllDone()
         }
       }
 
@@ -91,13 +120,19 @@ const App = () => {
     }
 
     // Allow DOM to mount, then begin tracking; add a hard timeout fallback
-    const startTimer = setTimeout(startAssetWatch, 0)
-    const hardTimeout = setTimeout(markDone, 10000)
+    const startTimer = setTimeout(() => {
+      startAssetWatch()
+      startDataFetch()
+    }, 0)
+
+    // Hard timeout fallback
+    const hardTimeout = setTimeout(() => {
+      setIsLoading(false)
+      document.documentElement.style.overflow = ''
+    }, 10000)
 
     // Prevent scroll while loading
-    if (isLoading) {
-      document.documentElement.style.overflow = 'hidden'
-    }
+    document.documentElement.style.overflow = 'hidden'
 
     return () => {
       clearTimeout(startTimer)
@@ -105,26 +140,25 @@ const App = () => {
       detachListeners.forEach((fn) => fn())
       document.documentElement.style.overflow = ''
     }
-  }, [isLoading])
+  }, [])
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<HomePage />} />
+        <Route path="/" element={<HomePage blogData={blogData} teamData={teamData} />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/service/:serviceId" element={<ServiceDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:postId" element={<BlogPost />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/post/new" element={<PostForm />} />
-        <Route path="/admin/post/:postId/edit" element={<PostForm />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<><Contact /><Footer /></>} />
       </Routes>
       {isLoading && <Loader />}
-          <ScrollToTopButton />
+      <ScrollToTopButton />
     </Router>
   )
 }
 
 export default App
+
+

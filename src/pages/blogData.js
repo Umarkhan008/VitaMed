@@ -1,7 +1,7 @@
 // Import rasmlar
-import sinImg from '../../public/assets/sin.png'
-import img2 from '../../public/assets/img2.webp'
-import logo from '../../public/assets/logo.jpg'
+import sinImg from '/assets/sin.png'
+import img2 from '/assets/img2.webp'
+import logo from '/assets/logo.jpg'
 
 // Blog postlari ma'lumotlari
 export const blogPosts = [

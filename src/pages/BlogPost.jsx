@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import Header from '../Header.jsx'
+import PageHeader from '../PageHeader.jsx'
 import Footer from '../Footer.jsx'
-import { blogPosts, getPostById } from './blogData.js'
+import { getPostById, fetchBlogPosts } from './blogAPI.js'
 
 const BlogPost = () => {
     const { postId } = useParams()
@@ -11,32 +11,34 @@ const BlogPost = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const foundPost = getPostById(postId)
-        const related = blogPosts.filter(p => p.id !== postId).slice(0, 3)
-        
-        setPost(foundPost)
-        setRelatedPosts(related)
-        setLoading(false)
+        const loadData = async () => {
+            setLoading(true)
+            const foundPost = await getPostById(postId)
+
+            if (foundPost) {
+                // Fetch related posts (exclude current one)
+                const allPosts = await fetchBlogPosts()
+                const related = allPosts.filter(p => p.id !== postId).slice(0, 3)
+                setPost(foundPost)
+                setRelatedPosts(related)
+            }
+            setLoading(false)
+        }
+        loadData()
     }, [postId])
 
     if (loading) {
         return (
             <>
-                <Header />
-                <main className="bg-white">
-                    <section className="py-16 bg-gray-50">
-                        <div className="max-w-4xl mx-auto px-4 text-center">
-                            <div className="animate-pulse">
-                                <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-4"></div>
-                                <div className="h-12 bg-gray-300 rounded w-96 mx-auto"></div>
-                            </div>
+                <PageHeader />
+                <main className="bg-white min-h-screen py-20">
+                    <div className="max-w-4xl mx-auto px-4 text-center">
+                        <div className="animate-pulse space-y-4">
+                            <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto"></div>
+                            <div className="h-64 bg-gray-200 rounded w-full"></div>
+                            <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
                         </div>
-                    </section>
-                    <section className="pb-10">
-                        <div className="max-w-4xl mx-auto px-4">
-                            <div className="w-full h-72 md:h-96 bg-gray-300 rounded-2xl animate-pulse"></div>
-                        </div>
-                    </section>
+                    </div>
                 </main>
                 <Footer />
             </>
@@ -46,11 +48,13 @@ const BlogPost = () => {
     if (!post) {
         return (
             <>
-                <Header />
-                <main className="max-w-3xl mx-auto px-4 py-24">
+                <PageHeader />
+                <main className="max-w-3xl mx-auto px-4 py-24 text-center min-h-[50vh]">
                     <h1 className="text-2xl font-extrabold text-gray-900 mb-2">Maqola topilmadi</h1>
-                    <p className="text-gray-600 mb-6">Sahifa o'chirilgan yoki mavjud emas.</p>
-                    <Link to="/blog" className="inline-flex items-center gap-2 text-teal-600 font-semibold no-underline">Blogga qaytish</Link>
+                    <p className="text-gray-600 mb-6">Sahifa o'chirilgan yoki mavjud emas ({postId}).</p>
+                    <Link to="/blog" className="inline-flex items-center gap-2 text-teal-600 font-semibold no-underline hover:text-teal-700 transition">
+                        Blogga qaytish
+                    </Link>
                 </main>
                 <Footer />
             </>
@@ -59,59 +63,85 @@ const BlogPost = () => {
 
     return (
         <>
-            <Header />
+            <PageHeader />
             <main className="bg-white">
-                {/* Hero */}
-                <section className="py-16 bg-gray-50">
+                {/* Header Section */}
+                <section className="relative py-20 bg-white">
                     <div className="max-w-4xl mx-auto px-4 text-center">
-                        <div className="inline-flex items-center gap-2 text-xs text-gray-600">
-                            <span className="px-2 py-0.5 rounded-full bg-teal-100 text-teal-700 border border-teal-200 font-semibold">{post.tag}</span>
+                        <div className="inline-flex items-center gap-2 text-xs md:text-sm text-gray-600 mb-6">
+                            <span className="px-3 py-1 rounded-full bg-teal-100 text-teal-700 border border-teal-200 font-semibold tracking-wide uppercase text-xs">{post.tag}</span>
                             <span>•</span>
                             <span>{new Date(post.date).toLocaleDateString()}</span>
                             <span>•</span>
-                            <span className="font-medium">{post.author}</span>
+                            <span className="font-medium flex items-center gap-1">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                {post.author}
+                            </span>
                         </div>
-                        <h1 className="mt-3 text-3xl md:text-5xl font-extrabold text-gray-900">{post.title}</h1>
+                        <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6">{post.title}</h1>
+                        {post.excerpt && (
+                            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">{post.excerpt}</p>
+                        )}
                     </div>
                 </section>
 
-                {/* Cover */}
-                <section className="pb-10">
-                    <div className="max-w-4xl mx-auto px-4">
-                        <img src={post.image} alt={post.title} className="w-full h-72 md:h-96 object-cover rounded-2xl shadow-sm" />
+                {/* Featured Image */}
+                <section className="-mt-10 pb-10 relative z-10 px-4">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 aspect-video md:aspect-[21/9] bg-gray-100">
+                            <img
+                                src={post.image || '/assets/logo.jpg'}
+                                alt={post.title}
+                                className="w-full h-full object-cover"
+                                onError={(e) => { e.target.src = '/assets/logo.jpg' }}
+                            />
+                        </div>
                     </div>
                 </section>
 
                 {/* Content */}
-                <section className="pb-16">
-                    <div className="max-w-4xl mx-auto px-4">
-                        <article className="prose prose-teal max-w-none">
+                <section className="pb-16 pt-8">
+                    <div className="max-w-3xl mx-auto px-4">
+                        <article className="prose prose-lg prose-teal mx-auto prose-img:rounded-xl prose-headings:font-bold prose-a:text-teal-600 hover:prose-a:text-teal-500">
                             {post.content.split('\n').map((line, idx) => (
-                                <p key={idx}>{line}</p>
+                                line.trim() ? <p key={idx} className="mb-4 text-gray-700 leading-relaxed">{line}</p> : <br key={idx} />
                             ))}
                         </article>
-                    </div>
-                </section>
 
-                {/* Related */}
-                <section className="pb-20 bg-gray-50">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <h2 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-6">O'xshash maqolalar</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {relatedPosts.map((r) => (
-                                <Link key={r.id} to={`/blog/${r.id}`} className="group bg-white ring-1 ring-gray-200 rounded-2xl overflow-hidden no-underline hover:shadow-md transition">
-                                    <div className="h-40 overflow-hidden">
-                                        <img src={r.image} alt={r.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                                    </div>
-                                    <div className="p-4">
-                                        <div className="text-xs text-gray-500">{new Date(r.date).toLocaleDateString()}</div>
-                                        <div className="mt-1 font-bold text-gray-900 line-clamp-2 group-hover:text-teal-600">{r.title}</div>
-                                    </div>
-                                </Link>
-                            ))}
+                        {/* Share / Tags could go here */}
+                        <div className="mt-12 pt-8 border-t border-gray-100">
+                            <Link to="/blog" className="inline-flex items-center gap-2 text-gray-600 hover:text-teal-600 font-medium transition-colors">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                                Barcha maqolalar
+                            </Link>
                         </div>
                     </div>
                 </section>
+
+                {/* Related Posts */}
+                {relatedPosts.length > 0 && (
+                    <section className="py-20 bg-white border-t border-gray-100">
+                        <div className="max-w-[1400px] mx-auto px-4">
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10 text-center">O'xshash maqolalar</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                                {relatedPosts.map((r) => (
+                                    <Link key={r.id} to={`/blog/${r.id}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ring-1 ring-gray-200/50 hover:-translate-y-1">
+                                        <div className="relative h-48 overflow-hidden">
+                                            <img src={r.image || '/assets/logo.jpg'} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold text-teal-700">
+                                                {new Date(r.date).toLocaleDateString()}
+                                            </div>
+                                        </div>
+                                        <div className="p-6">
+                                            <h3 className="text-lg font-bold text-gray-900 leading-tight mb-2 group-hover:text-teal-600 transition-colors line-clamp-2">{r.title}</h3>
+                                            <p className="text-sm text-gray-500 line-clamp-2">{r.excerpt}</p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
             </main>
             <Footer />
         </>
@@ -119,5 +149,3 @@ const BlogPost = () => {
 }
 
 export default BlogPost
-
-

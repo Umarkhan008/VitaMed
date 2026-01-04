@@ -1,35 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import doctor1 from '../public/assets/bexruzbek.jpg'
-import doctor2 from '../public/assets/bosh.jpg'
-import doctor3 from '../public/assets/mainDoctor2.png'
-import doctor4 from '../public/assets/anot.png'
-import doctor5 from '../public/assets/doctor5.jpg'
-const teamMembers = [
-  {
-    name: 'Dr. Muxtorov Behruz',
-    role: 'LOR SHIFOKOR',
-    experience: '3 yil',
-    img: doctor1,
-  },
-  {
-    name: 'Dr. G‘afurov Abdushoxid',
-    role: 'LOR SHIFOKOR',
-    experience: '15 yil',
-    img: doctor3,
-  },
-  {
-    name: 'Dr. Kimsanov Otajon',
-    role: 'LOR SHIFOKOR',
-    experience: '12 yil',
-    img: doctor2,
-  },
-  {
-    name: 'Dr. Ortiqboyev Oybek',
-    role: 'LOR SHIFOKOR',
-    experience: '4 yil',
-    img: doctor5,
-  },
-]
+import { fetchTeamMembers } from './pages/teamAPI.js'
 
 const ShareIcon = () => (
   <svg
@@ -48,19 +18,19 @@ const ShareIcon = () => (
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.75 8.44-4.92 8.44-9.94z" />
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
   </svg>
 )
 
-const TwitterIcon = () => (
+const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M22.46 6c-.77.34-1.6.57-2.46.68a4.27 4.27 0 001.87-2.36 8.56 8.56 0 01-2.71 1.03 4.26 4.26 0 00-7.26 3.88 12.09 12.09 0 01-8.78-4.45 4.26 4.26 0 001.32 5.68 4.23 4.23 0 01-1.93-.53v.05a4.26 4.26 0 003.42 4.18 4.3 4.3 0 01-1.92.07 4.27 4.27 0 003.98 2.96A8.54 8.54 0 012 19.54a12.06 12.06 0 006.54 1.92c7.85 0 12.14-6.5 12.14-12.13 0-.18 0-.36-.01-.54A8.67 8.67 0 0022.46 6z" />
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
   </svg>
 )
 
-const LinkedinIcon = () => (
+const TelegramIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.39V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43A2.06 2.06 0 113.27 5.37a2.06 2.06 0 012.07 2.06zM6.78 20.45H3.56V9h3.22v11.45z" />
+    <path d="M20.665 3.717c.18-.847-.53-1.498-1.258-1.139L3.483 11.2C2.65 11.58 2.67 12.607 3.513 12.96l4.28 1.797 9.873-6.126c.465-.28.892-.047.541.26l-7.994 7.11 3.582 2.757c.66.52 1.57.26 1.748-.567l3.122-14.47z" />
   </svg>
 )
 
@@ -71,16 +41,29 @@ const TeamCard = ({ member }) => {
         {/* Image Container */}
         <div className="relative h-96 overflow-hidden bg-gray-200">
           <img
-            src={member.img}
+            src={member.image || '/assets/logo.jpg'}
             alt={member.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            onError={(e) => { e.target.src = '/assets/logo.jpg' }}
           />
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#01bdb2]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-            <div className="flex items-center gap-4 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full">
-              <a href="#" aria-label="Share on Facebook" className="hover:text-white/90 transition-colors"><FacebookIcon /></a>
-              <a href="#" aria-label="Share on Twitter" className="hover:text-white/90 transition-colors"><TwitterIcon /></a>
-              <a href="#" aria-label="Share on LinkedIn" className="hover:text-white/90 transition-colors"><LinkedinIcon /></a>
+            <div className="flex scale-130 items-center gap-4 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+              {member.facebook && (
+                <a href={member.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white/90 transition-colors">
+                  <FacebookIcon />
+                </a>
+              )}
+              {member.instagram && (
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white/90 transition-colors">
+                  <InstagramIcon />
+                </a>
+              )}
+              {member.telegram && (
+                <a href={member.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="hover:text-white/90 transition-colors">
+                  <TelegramIcon />
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -103,9 +86,31 @@ const TeamCard = ({ member }) => {
   )
 }
 
-const Team = () => {
+const Team = ({ initialData }) => {
+  const [teamMembers, setTeamMembers] = useState(initialData || [])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [itemsPerView, setItemsPerView] = useState(3)
+  const [loading, setLoading] = useState(!initialData)
+
+  useEffect(() => {
+    if (initialData) {
+      setTeamMembers(initialData)
+      setLoading(false)
+      return
+    }
+
+    const loadTeam = async () => {
+      try {
+        const data = await fetchTeamMembers()
+        setTeamMembers(data)
+      } catch (error) {
+        console.error('Error loading team:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadTeam()
+  }, [initialData])
 
   useEffect(() => {
     const updateItemsPerView = () => {
@@ -130,10 +135,12 @@ const Team = () => {
   }, [maxIndex])
 
   const handleNext = () => {
+    if (teamMembers.length === 0) return
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
   }
 
   const handlePrev = () => {
+    if (teamMembers.length === 0) return
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
   }
 
@@ -141,8 +148,20 @@ const Team = () => {
     setCurrentIndex(index)
   }
 
+  if (loading && !initialData) {
+    return (
+      <section id="team" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-gray-500">
+        Yuklanmoqda...
+      </section>
+    )
+  }
+
+  if (teamMembers.length === 0) {
+    return null
+  }
+
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="team" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="flex flex-col items-center mb-12">
         <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">BIZNING JAMOA</span>
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#142959] text-center leading-tight">
@@ -162,7 +181,7 @@ const Team = () => {
           >
             {teamMembers.map((m) => (
               <div
-                key={m.name}
+                key={m.id}
                 className="px-4 flex-shrink-0"
                 style={{ width: `${100 / itemsPerView}%` }}
               >
@@ -173,41 +192,48 @@ const Team = () => {
         </div>
 
         {/* Navigation Arrows */}
-        <button
-          onClick={handlePrev}
-          className="absolute left-4 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
-          aria-label="Previous"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        {teamMembers.length > itemsPerView && (
+          <>
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+              aria-label="Previous"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-        <button
-          onClick={handleNext}
-          className="absolute right-4 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
-          aria-label="Next"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-4 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+              aria-label="Next"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
 
       {/* Carousel Dots */}
-      <div className="mt-12 flex items-center justify-center gap-3">
-        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      {teamMembers.length > itemsPerView && (
+        <div className="mt-12 flex items-center justify-center gap-3">
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
 
 export default Team
+
