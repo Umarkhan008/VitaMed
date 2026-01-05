@@ -14,11 +14,12 @@ import BlogPost from './pages/BlogPost.jsx'
 import Footer from './Footer.jsx'
 import BlogPreview from './pages/BlogPreview.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
-import Contact from './pages/Contact.jsx';
+import ContactPage from './pages/ContactPage.jsx'
 import ScrollToTopButton from "./ScrollToTopButton";
 import ScrollToTop from './utils/ScrollToTop';
 import { fetchBlogPosts } from './pages/blogAPI.js'
 import { fetchTeamMembers } from './pages/teamAPI.js'
+import Contact from './pages/Contact.jsx'
 
 const HomePage = ({ blogData, teamData }) => (
   <>
@@ -151,7 +152,7 @@ const App = () => {
         <Route path="/service/:serviceId" element={<ServiceDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:postId" element={<BlogPost />} />
-        <Route path="/contact" element={<><Contact /><Footer /></>} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
       {isLoading && <Loader />}
       <ScrollToTopButton />

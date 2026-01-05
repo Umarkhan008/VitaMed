@@ -9,11 +9,10 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                         {/* Brand */}
-                        <div>
+                        <div className="flex flex-col items-center md:items-start text-center md:text-left">
                             <div className="flex items-center gap-3 mb-5">
                                 <img src={logo} alt="VitaMed" className="w-12 h-12 rounded-full object-cover border-2 border-teal-500" />
-                                <div>
-
+                                <div className="text-left">
                                     <p className="text-white text-lg font-bold leading-tight m-0 flex items-center gap-2">
                                         Qo'qon lor
                                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-100/10 text-teal-300 border border-teal-400/30">
@@ -43,7 +42,7 @@ const Footer = () => {
                         </div>
 
                         {/* Quick Links */}
-                        <div>
+                        <div className="text-center md:text-left">
                             <h4 className="text-white font-semibold text-lg mb-5">Tezkor havolalar</h4>
                             <ul className="space-y-3 text-sm">
                                 <li><Link to="/" className="hover:text-white transition-colors">Bosh sahifa</Link></li>
@@ -54,7 +53,7 @@ const Footer = () => {
                         </div>
 
                         {/* Services */}
-                        <div>
+                        <div className="text-center md:text-left">
                             <h4 className="text-white font-semibold text-lg mb-5">Xizmatlar</h4>
                             <ul className="space-y-3 text-sm">
                                 <li>
@@ -79,12 +78,28 @@ const Footer = () => {
                         </div>
 
                         {/* Contact */}
-                        <div>
+                        <div className="text-center md:text-left">
                             <h4 className="text-white font-semibold text-lg mb-5">Bog'lanish</h4>
-                            <ul className="space-y-3 text-sm">
-                                <li className="flex items-center gap-2"><span className="text-teal-500">📍</span> Qoqon shaxar shoxruxobod kuchasi 4D-uy</li>
-                                <li className="flex items-center gap-2"><span className="text-teal-500">📞</span> +998 93 901 06 60</li>
-                                <li className="flex items-center gap-2"><span className="text-teal-500">✉️</span> info@vitamed.uz</li>
+                            <ul className="space-y-4 text-sm">
+                                <li className="flex items-start justify-center md:justify-start gap-3">
+                                    <svg className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span>Qoqon shaxar shoxruxobod kuchasi 4D-uy</span>
+                                </li>
+                                <li className="flex items-center justify-center md:justify-start gap-3">
+                                    <svg className="w-5 h-5 text-teal-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                    </svg>
+                                    <span>+998 93 901 06 60</span>
+                                </li>
+                                <li className="flex items-center justify-center md:justify-start gap-3">
+                                    <svg className="w-5 h-5 text-teal-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                    <span>info@vitamed.uz</span>
+                                </li>
                             </ul>
                             <div className="mt-6">
                                 <p className="text-sm text-gray-400 mb-2">Yangiliklarga obuna bo'ling</p>

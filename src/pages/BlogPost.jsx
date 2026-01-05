@@ -9,6 +9,7 @@ const BlogPost = () => {
     const [post, setPost] = useState(null)
     const [relatedPosts, setRelatedPosts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [isContentExpanded, setIsContentExpanded] = useState(false)
 
     useEffect(() => {
         const loadData = async () => {
@@ -61,12 +62,16 @@ const BlogPost = () => {
         )
     }
 
+    // Check if content is long (more than 100 words)
+    const contentWordCount = post.content ? post.content.trim().split(/\s+/).length : 0
+    const isLongContent = contentWordCount > 100
+
     return (
         <>
             <PageHeader />
             <main className="bg-white">
                 {/* Header Section */}
-                <section className="relative py-20 bg-white">
+                <section className="relative py-10 md:py-20 bg-white">
                     <div className="max-w-4xl mx-auto px-4 text-center">
                         <div className="inline-flex items-center gap-2 text-xs md:text-sm text-gray-600 mb-6">
                             <span className="px-3 py-1 rounded-full bg-teal-100 text-teal-700 border border-teal-200 font-semibold tracking-wide uppercase text-xs">{post.tag}</span>
@@ -88,7 +93,7 @@ const BlogPost = () => {
                 {/* Featured Image */}
                 <section className="-mt-10 pb-10 relative z-10 px-4">
                     <div className="max-w-5xl mx-auto">
-                        <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 aspect-video md:aspect-[21/9] bg-gray-100">
+                        <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200 aspect-[4/3] sm:aspect-video md:aspect-[21/9] bg-gray-100">
                             <img
                                 src={post.image || '/assets/logo.jpg'}
                                 alt={post.title}
@@ -102,11 +107,41 @@ const BlogPost = () => {
                 {/* Content */}
                 <section className="pb-16 pt-8">
                     <div className="max-w-3xl mx-auto px-4">
-                        <article className="prose prose-lg prose-teal mx-auto prose-img:rounded-xl prose-headings:font-bold prose-a:text-teal-600 hover:prose-a:text-teal-500">
-                            {post.content.split('\n').map((line, idx) => (
-                                line.trim() ? <p key={idx} className="mb-4 text-gray-700 leading-relaxed">{line}</p> : <br key={idx} />
-                            ))}
-                        </article>
+                        <div
+                            className={`prose prose-lg prose-teal mx-auto prose-img:rounded-xl prose-headings:font-bold prose-a:text-teal-600 hover:prose-a:text-teal-500 overflow-hidden transition-all duration-500 ${isLongContent && !isContentExpanded ? 'max-h-96' : 'max-h-[10000px]'
+                                }`}
+                        >
+                            <article>
+                                {post.content.split('\n').map((line, idx) => (
+                                    line.trim() ? <p key={idx} className="mb-4 text-gray-700 leading-relaxed">{line}</p> : <br key={idx} />
+                                ))}
+                            </article>
+                        </div>
+
+                        {isLongContent && (
+                            <div className="text-center mt-8">
+                                <button
+                                    onClick={() => setIsContentExpanded(!isContentExpanded)}
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition-colors shadow-md hover:shadow-lg"
+                                >
+                                    {isContentExpanded ? (
+                                        <>
+                                            Kamroq ko'rsatish
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path>
+                                            </svg>
+                                        </>
+                                    ) : (
+                                        <>
+                                            Ko'proq o'qish
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                        )}
 
                         {/* Share / Tags could go here */}
                         <div className="mt-12 pt-8 border-t border-gray-100">
@@ -122,8 +157,8 @@ const BlogPost = () => {
                 {relatedPosts.length > 0 && (
                     <section className="py-20 bg-white border-t border-gray-100">
                         <div className="max-w-[1400px] mx-auto px-4">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10 text-center">O'xshash maqolalar</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-10 text-center">O'xshash maqolalar</h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
                                 {relatedPosts.map((r) => (
                                     <Link key={r.id} to={`/blog/${r.id}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ring-1 ring-gray-200/50 hover:-translate-y-1">
                                         <div className="relative h-48 overflow-hidden">

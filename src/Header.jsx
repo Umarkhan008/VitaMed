@@ -42,15 +42,16 @@ const Header = () => {
                 </div>
 
                 {/* Top Contact Bar */}
-                <div className="bg-white text-black py-2 relative z-10">
+                <div className="bg-white text-black py-2 relative z-[60]">
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex justify-between items-center flex-wrap gap-4">
-                            <div className="flex gap-8 flex-wrap">
+                            <div className="flex gap-4 md:gap-8 flex-wrap">
                                 <div className="flex items-center gap-2 text-sm font-medium">
                                     <svg className="w-4 text-teal-500 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                                     </svg>
-                                    <span>Qo'qon shahar, Shohruxobod ko'chasi 4D-uy</span>
+                                    <span className="hidden sm:inline">Qo'qon shahar, Shohruxobod ko'chasi 4D-uy</span>
+                                    <span className="sm:hidden text-xs">Qo'qon, Shohruxobod 4D</span>
                                 </div>
                                 <a href="tel:+998939010660" className="flex items-center gap-2 text-sm font-medium hover:text-teal-600 transition-colors duration-300">
                                     <svg className="w-4 h-4 text-teal-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -58,7 +59,7 @@ const Header = () => {
                                     </svg>
                                     <span>+998 93 901 06 60</span>
                                 </a>
-                                <div className="flex items-center gap-2  text-sm font-medium">
+                                <div className="hidden lg:flex items-center gap-2 text-sm font-medium">
                                     <svg className="w-4 h-4 text-teal-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -82,29 +83,29 @@ const Header = () => {
                                         <path d="M20.665 3.717c.18-.847-.53-1.498-1.258-1.139L3.483 11.2C2.65 11.58 2.67 12.607 3.513 12.96l4.28 1.797 9.873-6.126c.465-.28.892-.047.541.26l-7.994 7.11 3.582 2.757c.66.52 1.57.26 1.748-.567l3.122-14.47z" />
                                     </svg>
                                 </a>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Main Navigation */}
-                <nav className="bg-white border-b border-gray-200 py-4 relative z-10">
+                <nav className="bg-white border-b border-gray-200 py-3 md:py-4 relative z-[60]">
                     <div className="max-w-7xl mx-auto px-4">
                         <div className="flex items-center justify-between gap-8">
                             {/* Logo Section */}
                             <div className="flex items-center gap-4 flex-shrink-0">
                                 <img src={logo} alt="VitaMed logo" className="w-12 h-12 rounded-full object-cover border-2 border-teal-500" />
                                 <div className="flex flex-col">
-                                    <h1 className="text-xl font-bold text-gray-800 m-0 leading-tight flex items-center gap-2">
+                                    <h1 className="text-lg md:text-xl font-bold text-gray-800 m-0 leading-tight flex items-center gap-2">
                                         Qo'qon lor
-                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-teal-100 text-teal-700 border border-teal-200">
-                                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
+                                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] md:text-xs font-semibold bg-teal-100 text-teal-700 border border-teal-200">
+                                            <svg viewBox="0 0 24 24" className="w-3 h-3 md:w-3.5 md:h-3.5" fill="currentColor" aria-hidden="true">
                                                 <path d="M12 2a10 10 0 1 0 10 10A10.012 10.012 0 0 0 12 2Zm1 5a1 1 0 0 0-2 0v4.586l-2.707 2.707a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13 11.586Z" />
                                             </svg>
                                             24/7
                                         </span>
                                     </h1>
-                                    <p className="text-sm text-gray-500 m-0 font-medium">Sifatli Tibbiy Xizmat</p>
+                                    <p className="text-xs md:text-sm text-gray-500 m-0 font-medium whitespace-nowrap">Sifatli Tibbiy Xizmat</p>
                                 </div>
                             </div>
 
@@ -140,7 +141,7 @@ const Header = () => {
                         </div>
 
                         {/* Mobile Navigation */}
-                        <div className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 transition-all duration-300 z-20 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`} style={{ visibility: menuOpen ? 'visible' : 'hidden' }}>
+                        <div className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 transition-all duration-300 z-[70] shadow-xl ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`} style={{ visibility: menuOpen ? 'visible' : 'hidden' }}>
                             <div className="p-6 flex flex-col gap-4">
                                 {navItems.map(({ id, label }) => (
                                     <button
@@ -172,8 +173,23 @@ const Header = () => {
                             </p>
 
                             <div className="flex gap-4 justify-center mb-12 flex-wrap">
-                                <button className="px-8 py-4 text-base font-bold rounded-lg border-none cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-teal-500 text-white hover:bg-teal-600 hover:-translate-y-1 hover:shadow-xl">BATAFSIL</button>
-                                <button className="px-8 py-4 text-base font-bold rounded-lg cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-transparent text-white border-2 border-white hover:bg-white hover:text-gray-800 hover:-translate-y-1 hover:shadow-xl">BIZ HAQIMIZDA</button>
+                                <button
+                                    onClick={() => {
+                                        const servicesSection = document.getElementById('services');
+                                        if (servicesSection) {
+                                            servicesSection.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }}
+                                    className="px-8 py-4 text-base font-bold rounded-lg border-none cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-teal-500 text-white hover:bg-teal-600 hover:-translate-y-1 hover:shadow-xl"
+                                >
+                                    BATAFSIL
+                                </button>
+                                <button
+                                    onClick={() => handleNavClick('/contact')}
+                                    className="px-8 py-4 text-base font-bold rounded-lg cursor-pointer transition-all duration-300 uppercase tracking-wider shadow-lg bg-transparent text-white border-2 border-white hover:bg-white hover:text-gray-800 hover:-translate-y-1 hover:shadow-xl"
+                                >
+                                    BIZ HAQIMIZDA
+                                </button>
                             </div>
 
                             <div className="flex gap-8 justify-center flex-wrap">
