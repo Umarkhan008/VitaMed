@@ -41,11 +41,11 @@ const Testimonial = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Sarlavha */}
         <div className="text-center mb-12 sm:mb-20">
-          <span className="inline-block px-4 py-2 rounded-full bg-teal-50 text-teal-600 font-semibold mb-4 shadow-sm">
+          <span className="inline-block px-5 py-2 rounded-full bg-teal-50 text-teal-600 font-bold tracking-widest text-xs uppercase shadow-sm border border-teal-100">
             BEMORLARIMIZ FIKRI
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#142959] leading-tight">
-            Mijozlarimiz biz haqimizda nima deyishadi
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-outfit text-[#142959] leading-tight mt-4">
+            Mijozlarimiz biz haqimizda <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600">nima deyishadi?</span>
           </h2>
         </div>
 

@@ -1,134 +1,107 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { Check, Phone } from 'lucide-react'
 import img1 from '../public/assets/brat2.jpg'
 
 const About = () => {
     return (
-        <div id="about" className='w-full bg-gray-50'>
-            <section className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 py-16 sm:py-20 px-4 lg:px-16">
-                {/* Images */}
-                <div className="relative flex-shrink-0 w-full lg:w-auto mb-10 lg:mb-0">
-                    {/* Main image container */}
-                    <div className="relative w-full max-w-[400px] sm:max-w-[450px] mx-auto lg:mx-0">
-                        {/* Main image with enhanced styling */}
-                        <div className="relative group">
+        <div id="about" className='w-full bg-slate-50 overflow-hidden'>
+            <section className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 sm:gap-16 py-20 px-6">
+
+                {/* Image Section */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="relative w-full lg:w-1/2 flex justify-center lg:justify-start"
+                >
+                    <div className="relative">
+                        <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/20 group">
                             <img
                                 src={img1}
                                 alt="Doctor working"
-                                className="w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[420px] h-[380px] sm:h-[420px] lg:h-[500px] object-cover rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                                className="w-full max-w-md h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            {/* Floating elements for visual interest */}
-                            <div className="absolute -top-6 -left-6 w-12 h-12 bg-[#01bdb2] rounded-full flex items-center justify-center shadow-lg animate-pulse">
-                                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                            </div>
-                            <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-[#142959] rounded-full flex items-center justify-center shadow-lg">
-                                <svg width="16" height="16" fill="white" viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
+
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-teal-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         </div>
 
+                        {/* Decorative Elements */}
+                        <div className="absolute -top-8 -left-8 w-24 h-24 bg-teal-100 rounded-full blur-2xl opacity-60 z-0"></div>
+                        <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-100 rounded-full blur-2xl opacity-60 z-0"></div>
 
-                        {/* Additional decorative element */}
-                        <div className="absolute top-8 -right-2 w-16 h-16 bg-gradient-to-br from-[#01bdb2] to-[#142959] rounded-2xl -z-10 opacity-30 transform rotate-12"></div>
-
-                        {/* Enhanced decorative background */}
-                        <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 w-full h-full bg-gradient-to-br from-[#01bdb2] to-[#142959] rounded-3xl -z-10 opacity-15"></div>
-
-                        {/* Floating statistics card */}
-                        <div className="absolute -bottom-2 -left-4 sm:-left-8 bg-white p-4 sm:p-6 rounded-2xl shadow-xl z-20 min-w-[140px] sm:min-w-[160px]">
+                        {/* Floating Stats Card */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                            className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl z-20 border border-slate-100"
+                        >
                             <div className="text-center">
-                                <div className="text-2xl sm:text-3xl font-bold text-[#01bdb2]">12+</div>
-                                <div className="text-sm sm:text-base font-semibold text-[#142959]">Yillik Tajriba</div>
+                                <span className="block text-4xl font-bold text-teal-500">12+</span>
+                                <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">Yillik Tajriba</span>
                             </div>
-                        </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
 
+                {/* Content Section */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full lg:w-1/2 space-y-8"
+                >
+                    <div className="space-y-4">
+                        <span className="inline-block px-5 py-2 rounded-full bg-teal-50 text-teal-600 font-bold text-xs tracking-widest uppercase shadow-sm border border-teal-100/50">
+                            Qo'qon lorga xush kelibsiz
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-bold font-outfit text-slate-800 leading-tight">
+                            Sog'lig'ingiz uchun <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600">eng yaxshi g'amxo'rlik</span>
+                        </h2>
+                        <p className="text-slate-600 text-lg leading-relaxed">
+                            Tajribali shifokorlarimiz sizning eshitish, nafas olish va so'zlash qobiliyatingizni tiklash uchun eng ilg'or texnologiyalardan foydalanadi.
+                            Bizda quloq shang'illashi, burun tiqilishi, tomoq og'rishi va boshqa ENT muammolari chuqur tahlil qilinadi.
+                        </p>
                     </div>
-                </div>
-                {/* Text Content */}
-                <div className="max-w-xl w-full lg:ml-16">
-                    <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">
-                        Qo'qon lorga xush kelibsiz
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#142959] mb-6 sm:mb-8 leading-tight">
-                        Sog'lig'ingiz uchun eng yaxshi g'amxo'rlik
-                    </h2>
-                    <p className="text-gray-600 text-base sm:text-lg lg:text-lg mb-6 sm:mb-8 leading-relaxed">
-                        Tajribali shifokorlarimiz sizning eshitish, nafas olish va so'zlash qobiliyatingizni tiklash uchun eng ilg'or texnologiyalardan foydalanadi.
-                        Bizda quloq shang'illashi, burun tiqilishi, tomoq og'rishi va boshqa ENT muammolari chuqur tahlil qilinadi va samarali yechimlar taklif etiladi.
-                    </p>
-                    <ul className="mb-8 sm:mb-10 grid grid-cols-1 md:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-4 sm:gap-y-6">
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            TIBBIY MASLAHAT
-                        </li>
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            YAXSHI TAJRIBALI SHIFOKORLAR
-                        </li>
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            ZAMONAVIY USKUNALAR
-                        </li>
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            BURUN MUAMMOLARI
-                        </li>
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            BARCHA TURDAGI LOR OPERATSIYALAR
-                        </li>
-                        <li className="flex items-center gap-3 sm:gap-4 font-semibold text-[16px] sm:text-[18px] text-[#142959] hover:text-[#01bdb2] transition-colors duration-300">
-                            <span className="text-[#01bdb2] text-xl sm:text-2xl bg-[#01bdb2] bg-opacity-10 p-1.5 sm:p-2 rounded-full">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                            QULOQ MUAMMOLARI
-                        </li>
-                    </ul>
-                    <div className="w-full mx-auto">
-                        <div className="flex w-full flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 mt-8 sm:mt-12">
-                            {/* Read More Button */}
-                            <button className="w-full md:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-[#01bdb2] text-white rounded-xl font-bold text-[16px] sm:text-[18px] shadow-lg hover:bg-[#142959] hover:shadow-xl transition-all duration-300 min-w-[180px] sm:min-w-[200px] transform hover:scale-105">
-                                BATAFSIL
-                            </button>
-                            {/* Phone Info */}
-                            <div className="flex items-center gap-4 sm:gap-6 w-full md:w-auto min-w-[220px] sm:min-w-[250px] bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                                <span className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#01bdb2] shadow-lg">
-                                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20" className="text-white">
-                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                                    </svg>
-                                </span>
-                                <div>
-                                    <div className="font-bold text-[18px] sm:text-[22px] text-[#142959] leading-tight">+998 93 901 06 60</div>
-                                    <div className="text-gray-600 font-semibold text-[14px] sm:text-[16px] mt-1">Har qanday vaqtda</div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {[
+                            "Tibbiy Maslahat",
+                            "Tajribali Shifokorlar",
+                            "Zamonaviy Uskunalar",
+                            "Burun Muammolari",
+                            "Barcha Turdagi Operatsiyalar",
+                            "Quloq Muammolari"
+                        ].map((item, idx) => (
+                            <div key={idx} className="flex items-center gap-3 group cursor-default">
+                                <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+                                    <Check className="w-4 h-4 text-teal-500 group-hover:text-white transition-colors duration-300" strokeWidth={3} />
                                 </div>
+                                <span className="font-semibold text-slate-700 group-hover:text-teal-600 transition-colors">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                        <button className="px-8 py-4 bg-teal-500 text-white rounded-xl font-bold shadow-lg shadow-teal-500/30 hover:bg-teal-600 hover:-translate-y-1 transition-all duration-300">
+                            Batafsil ma'lumot
+                        </button>
+
+                        <div className="flex items-center gap-4 group cursor-pointer">
+                            <div className="w-14 h-14 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <Phone className="w-6 h-6 text-teal-500 fill-teal-500" />
+                            </div>
+                            <div>
+                                <p className="text-slate-500 text-sm font-medium">Qo'ng'iroq qiling</p>
+                                <a href="tel:+998939010660" className="text-xl font-bold text-slate-800 group-hover:text-teal-600 transition-colors">+998 93 901 06 60</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
         </div>
     )

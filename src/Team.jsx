@@ -36,31 +36,31 @@ const TelegramIcon = () => (
 
 const TeamCard = ({ member }) => {
   return (
-    <div className="group flex-shrink-0 p-2 w-full">
-      <div className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+    <div className="group flex-shrink-0 p-3 w-full">
+      <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-300 h-full flex flex-col border border-slate-100 group-hover:border-teal-100">
         {/* Image Container */}
-        <div className="relative h-96 overflow-hidden bg-gray-200">
+        <div className="relative h-96 overflow-hidden bg-gray-100">
           <img
             src={member.image || '/assets/logo.jpg'}
             alt={member.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             onError={(e) => { e.target.src = '/assets/logo.jpg' }}
           />
           {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#01bdb2]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-            <div className="flex scale-130 items-center gap-4 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full">
+          <div className="absolute inset-0 bg-gradient-to-t from-teal-900/90 via-teal-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+            <div className="flex scale-90 group-hover:scale-100 transition-transform duration-300 items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-full">
               {member.facebook && (
-                <a href={member.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white/90 transition-colors">
+                <a href={member.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-teal-600 hover:bg-teal-500 hover:text-white transition-all duration-300">
                   <FacebookIcon />
                 </a>
               )}
               {member.instagram && (
-                <a href={member.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white/90 transition-colors">
+                <a href={member.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-pink-600 hover:bg-pink-500 hover:text-white transition-all duration-300">
                   <InstagramIcon />
                 </a>
               )}
               {member.telegram && (
-                <a href={member.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="hover:text-white/90 transition-colors">
+                <a href={member.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-sky-500 hover:bg-sky-500 hover:text-white transition-all duration-300">
                   <TelegramIcon />
                 </a>
               )}
@@ -69,16 +69,16 @@ const TeamCard = ({ member }) => {
         </div>
 
         {/* Content Container */}
-        <div className="p-8 text-center">
-          <h3 className="text-2xl font-extrabold text-[#142959] mb-2">
+        <div className="p-6 text-center">
+          <h3 className="text-2xl font-bold font-outfit text-slate-800 mb-2 group-hover:text-teal-600 transition-colors">
             {member.name}
           </h3>
-          <p className="text-base text-[#01bdb2] font-semibold tracking-wide mb-3">{member.role}</p>
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-            <svg className="w-4 h-4 text-[#01bdb2]" fill="currentColor" viewBox="0 0 20 20">
+          <p className="text-sm font-semibold text-teal-500 uppercase tracking-wider mb-4">{member.role}</p>
+          <div className="inline-flex items-center justify-center gap-2 text-sm text-slate-500 bg-slate-50 px-4 py-2 rounded-full">
+            <svg className="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.429 5.951 1.429a1 1 0 001.169-1.409l-7-14z" />
             </svg>
-            <span className="font-semibold">Tajriba: {member.experience}</span>
+            <span className="font-medium">Tajriba: {member.experience}</span>
           </div>
         </div>
       </div>
@@ -151,7 +151,10 @@ const Team = ({ initialData }) => {
   if (loading && !initialData) {
     return (
       <section id="team" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-gray-500">
-        Yuklanmoqda...
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-12 h-12 border-4 border-teal-200 border-t-teal-500 rounded-full animate-spin mb-4"></div>
+          <p className="font-outfit font-medium">Jamoa yuklanmoqda...</p>
+        </div>
       </section>
     )
   }
@@ -161,18 +164,23 @@ const Team = ({ initialData }) => {
   }
 
   return (
-    <section id="team" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div className="flex flex-col items-center mb-12">
-        <span className="inline-block px-4 py-2 rounded-full bg-[#f0fffd] text-[#01bdb2] font-semibold mb-4 shadow-sm">BIZNING JAMOA</span>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-[#142959] text-center leading-tight">
-          Bizning Mutaxassislarimiz
+    <section id="team" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="flex flex-col items-center mb-16 text-center space-y-4">
+        <span className="inline-block px-5 py-2 rounded-full bg-teal-50 text-teal-600 font-bold tracking-widest text-xs uppercase shadow-sm border border-teal-100">
+          BIZNING JAMOA
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold font-outfit text-slate-800 leading-tight">
+          Bizning <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600">Mutaxassislarimiz</span>
         </h2>
+        <p className="text-slate-500 max-w-2xl text-lg">
+          Tajribali shifokorlarimiz sizning salomatligingiz uchun qayg'uradi.
+        </p>
       </div>
 
       {/* Carousel Container */}
       <div className="relative">
         {/* Carousel */}
-        <div className="overflow-hidden">
+        <div className="overflow-hidden py-4 -my-4 px-2 -mx-2">
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{
@@ -182,7 +190,7 @@ const Team = ({ initialData }) => {
             {teamMembers.map((m) => (
               <div
                 key={m.id}
-                className="px-4 flex-shrink-0"
+                className="px-0 md:px-3 flex-shrink-0"
                 style={{ width: `${100 / itemsPerView}%` }}
               >
                 <TeamCard member={m} />
@@ -196,21 +204,21 @@ const Team = ({ initialData }) => {
           <>
             <button
               onClick={handlePrev}
-              className="absolute left-4 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-16 bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-600 border border-slate-100 hover:border-teal-200 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 z-10"
               aria-label="Previous"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             <button
               onClick={handleNext}
-              className="absolute right-4 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-12 bg-[#01bdb2] hover:bg-[#009a8f] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-16 bg-white hover:bg-teal-50 text-slate-700 hover:text-teal-600 border border-slate-100 hover:border-teal-200 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 z-10"
               aria-label="Next"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </>
@@ -224,7 +232,7 @@ const Team = ({ initialData }) => {
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#01bdb2] w-8' : 'bg-gray-300 hover:bg-gray-400'
+              className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-teal-500 w-8' : 'bg-slate-200 w-2 hover:bg-teal-200'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />

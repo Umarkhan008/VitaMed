@@ -1,63 +1,106 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { Ear, Flower2, Stethoscope, Microscope } from 'lucide-react'
 
 const services = [
     {
-        icon: '🦻',
+        icon: Ear,
         title: 'Eshitishni protezlash (Phonak)',
-        desc: 'Yoshga xos eshitish pasayishi va erta yoshda ortirilgan karlik'
+        desc: 'Yoshga xos eshitish pasayishi va erta yoshda ortirilgan karlik muammolari uchun zamonaviy yechimlar.',
+        color: 'text-blue-500',
+        bg: 'bg-blue-50'
     },
     {
-        icon: '🤧',
-        title: 'Bolalarda allergiya',
-        desc: 'Bolalarda allergiya muammolarini samarali davolash bo\'yicha xizmatlar ko\'rsatamiz.'
+        icon: Flower2,
+        title: 'Allergiya Davolash',
+        desc: 'Mavsumiy va doimiy allergiya muammolarini aniqlash va samarali davolash.',
+        color: 'text-pink-500',
+        bg: 'bg-pink-50'
     },
     {
-        icon: '🗣️',
-        title: 'Tomoq muammolari',
-        desc: 'Tomoqdagi muamolarni erta aniqlash, diagnostika va kompleks davolash xizmatlari.'
+        icon: Stethoscope,
+        title: 'Tomoq kasalliklari',
+        desc: 'Tomoqdagi yallig\'lanish, og\'riq va surunkali kasalliklarni kompleks davolash.',
+        color: 'text-teal-500',
+        bg: 'bg-teal-50'
     },
     {
-        icon: '👃',
-        title: 'Burun poliplari',
-        desc: 'Burun poliplarini xavfsiz olib tashlash va qayta paydo bo\'lishining oldini olish.'
+        icon: Microscope,
+        title: 'Endoskopik Tekshiruv',
+        desc: 'Burun va tomoq yo\'llarini eng so\'nggi texnologiyalar yordamida aniq diagnostika qilish.',
+        color: 'text-purple-500',
+        bg: 'bg-purple-50'
     }
 ];
 
-const Services = () => {
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2
+        }
+    }
+}
+
+const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+}
+
+const Speciality = () => {
     return (
-        <section className=' py-16 sm:py-24'>
-            <div className='max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center'>
-                <div className='text-center mb-16'>
-                    <span className="inline-block px-4 py-2 rounded-full bg-teal-50 text-teal-600 font-semibold mb-4 shadow-sm">
-                        XUSUSIYATLARIMIZ
-                    </span>
-                    <h2 className='text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#142959] leading-tight'>
-                        Nima uchun bizni tanlashadi?
-                    </h2>
+        <section className='py-20 bg-gradient-to-b from-white to-slate-50'>
+            <div className='max-w-7xl mx-auto px-6'>
+                <div className='text-center mb-16 space-y-4'>
+                    <motion.span
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block px-4 py-1.5 rounded-full bg-teal-50 text-teal-600 font-semibold text-sm tracking-wide uppercase shadow-sm border border-teal-100"
+                    >
+                        Xususiyatlarimiz
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className='text-3xl md:text-5xl font-bold font-outfit text-slate-800 leading-tight'
+                    >
+                        Nima uchun bizni <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-400">tanlashadi?</span>
+                    </motion.h2>
                 </div>
 
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 w-full'>
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'
+                >
                     {services.map((service, idx) => (
-                        <div
+                        <motion.div
                             key={idx}
-                            className='group bg-white rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2'
+                            variants={item}
+                            className='group bg-white rounded-[2rem] p-8 flex flex-col items-center text-center shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-teal-500/10 transition-all duration-300 border border-slate-100 hover:border-teal-100 hover:-translate-y-2'
                         >
-                            <div className='w-20 h-20 bg-teal-50 rounded-2xl flex items-center justify-center text-5xl mb-6 group-hover:bg-teal-500 group-hover:scale-110 transition-all duration-500'>
-                                <span className="group-hover:scale-110 transition-transform duration-500">{service.icon}</span>
+                            <div className={`w-20 h-20 ${service.bg} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden`}>
+                                <div className="absolute inset-0 bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <service.icon className={`w-10 h-10 ${service.color} relative z-10`} strokeWidth={1.5} />
                             </div>
-                            <h3 className='text-xl sm:text-2xl font-bold text-[#142959] mb-4 group-hover:text-teal-600 transition-colors'>
+                            <h3 className='text-xl font-bold font-outfit text-slate-800 mb-3 group-hover:text-teal-600 transition-colors'>
                                 {service.title}
                             </h3>
-                            <p className='text-gray-500 text-base leading-relaxed'>
+                            <p className='text-slate-500 text-sm leading-relaxed'>
                                 {service.desc}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     )
 }
 
-
-export default Services
+export default Speciality
